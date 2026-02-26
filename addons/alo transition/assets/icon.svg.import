@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brxfpfyv6x8ae"
-path="res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+uid="uid://bg4r54wgjqnhg"
+path="res://.godot/imported/icon.svg-4fdf55a3dafc55ac5e372a3b955af4cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon.svg"
-dest_files=["res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"]
+source_file="res://addons/alo transition/assets/icon.svg"
+dest_files=["res://.godot/imported/icon.svg-4fdf55a3dafc55ac5e372a3b955af4cf.ctex"]
 
 [params]
 
