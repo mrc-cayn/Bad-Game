@@ -1,4 +1,4 @@
-extends TileMap
+extends "res://Assets/Entities/Button/CheckButton.gd"
 
 
 # Called when the node enters the scene tree for the first time.

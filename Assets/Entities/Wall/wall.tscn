@@ -2,12 +2,14 @@
 
 [ext_resource type="Script" uid="uid://ba1lpd2gxqer0" path="res://Assets/Entities/Wall/wall.gd" id="1_3jvos"]
 [ext_resource type="Texture2D" uid="uid://dvkl1lbucwblx" path="res://extra/Templates/32.png" id="1_se2ee"]
+[ext_resource type="PackedScene" uid="uid://caqbrx0o1oqcn" path="res://Assets/Entities/Button/button.tscn" id="3_g3wfh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3jvos"]
 size = Vector2(32, 32)
 
 [node name="Wall" type="StaticBody2D" unique_id=1816247195]
 z_index = -1
+position = Vector2(400, 344)
 script = ExtResource("1_3jvos")
 target_height = 64.0
 
@@ -16,3 +18,10 @@ texture = ExtResource("1_se2ee")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=915311607]
 shape = SubResource("RectangleShape2D_3jvos")
+
+[node name="button" parent="." unique_id=19675738 instance=ExtResource("3_g3wfh")]
+offset_left = 72.0
+offset_top = 64.0
+offset_right = 80.0
+offset_bottom = 72.0
+metadata/_edit_use_anchors_ = true

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dsskccmp3pta4"]
 
-[ext_resource type="Script" uid="uid://lin2xo1ienj8" path="res://Button.gd" id="1_ihiit"]
+[ext_resource type="Script" uid="uid://lin2xo1ienj8" path="res://Assets/Entities/Button/checkbutton.gd" id="1_ihiit"]
 
 [node name="CheckButton" type="CheckButton" unique_id=1620363867]
 top_level = true
