@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b22pllpnuavox"]
+
+[ext_resource type="Texture2D" uid="uid://dvkl1lbucwblx" path="res://extra/Templates/32.png" id="1_105sx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j4sc4"]
+radius = 16.0
+
+[node name="Cat" type="CharacterBody2D" unique_id=1802388711]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=766770545]
+z_index = 1
+shape = SubResource("CircleShape2D_j4sc4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1823408163]
+texture = ExtResource("1_105sx")
