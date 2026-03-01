@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dsskccmp3pta4"]
+
+[ext_resource type="Script" uid="uid://lin2xo1ienj8" path="res://Button.gd" id="1_ihiit"]
+
+[node name="CheckButton" type="CheckButton" unique_id=1620363867]
+top_level = true
+offset_left = 16.0
+offset_top = -32.0
+offset_right = 64.12781
+offset_bottom = 0.057762146
+rotation = 1.5707964
+script = ExtResource("1_ihiit")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="toggled" from="." to="." method="_on_toggled"]
