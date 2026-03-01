@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://1agrttq1rbs3"]
+
+[ext_resource type="Texture2D" uid="uid://c2oihgex0vb7u" path="res://extra/Templates/16.png" id="1_uc4jj"]
+
+[node name="Target" type="Sprite2D" unique_id=777876796 groups=["target"]]
+modulate = Color(1, 1, 0.3882353, 1)
+texture = ExtResource("1_uc4jj")

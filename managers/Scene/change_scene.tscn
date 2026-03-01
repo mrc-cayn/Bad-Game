@@ -1,10 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bkix2rmktgg24"]
+[gd_scene format=3 uid="uid://bkix2rmktgg24"]
 
 [ext_resource type="Script" uid="uid://c868ct33l84an" path="res://managers/Scene/change_scene.gd" id="1_tg0k4"]
 
-[node name="Change_Scene" type="Node"]
+[node name="Change_Scene" type="Node" unique_id=1581209892]
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2096725821]
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_tg0k4")
