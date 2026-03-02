@@ -11,8 +11,9 @@ func  _ready() -> void:
 
 func activate():
 	var tween = create_tween()
-	tween.tween_property($".","scale", target_scale, target_height/speed)   
+	tween.tween_property($".","scale", target_scale, ((target_scale-scale)*tile_size/speed).y)  
+
 
 func deactivate():
 	var tween = create_tween()
-	tween.tween_property($".","scale",Vector2.ONE, target_height/speed)   
+	tween.tween_property($".","scale",Vector2.ONE,((scale-Vector2.ONE)*tile_size/speed).y )   
