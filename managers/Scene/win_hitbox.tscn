@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://qyu3so5t3ssw"]
+
+[ext_resource type="Script" uid="uid://c0scrkmg2vg7x" path="res://win_hitbox.gd" id="1_gjo7e"]
+[ext_resource type="Texture2D" uid="uid://dr7fjf0tpsat7" path="res://extra/Templates/64.png" id="2_eqf45"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gf3s"]
+size = Vector2(64, 256)
+
+[node name="Win_hitbox" type="Area2D" unique_id=1067213929]
+script = ExtResource("1_gjo7e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2025042722]
+shape = SubResource("RectangleShape2D_3gf3s")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=717351237]
+self_modulate = Color(0.3556667, 0.97, 0, 0.15294118)
+position = Vector2(0, 7.6293945e-06)
+scale = Vector2(1, 4)
+texture = ExtResource("2_eqf45")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

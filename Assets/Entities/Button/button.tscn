@@ -4,8 +4,10 @@
 
 [node name="button" type="Button" unique_id=19675738]
 top_level = true
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
 script = ExtResource("1_k38lq")
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
