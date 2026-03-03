@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b16kyxvi5a3vn"
-path="res://.godot/imported/brick-wall.png-52a2cccea2b67b4d1096545092f33ee3.ctex"
+uid="uid://d37vlad6dhtsn"
+path="res://.godot/imported/Slope.png-2fd645ad8f8068ac1f1ceb0e0fd885ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://extra/sprites/brick-wall.png"
-dest_files=["res://.godot/imported/brick-wall.png-52a2cccea2b67b4d1096545092f33ee3.ctex"]
+source_file="res://extra/Slope.png"
+dest_files=["res://.godot/imported/Slope.png-2fd645ad8f8068ac1f1ceb0e0fd885ba.ctex"]
 
 [params]
 
