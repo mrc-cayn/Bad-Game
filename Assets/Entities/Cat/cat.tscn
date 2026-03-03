@@ -1,24 +1,28 @@
 [gd_scene format=3 uid="uid://b22pllpnuavox"]
 
-[ext_resource type="Texture2D" uid="uid://dvkl1lbucwblx" path="res://extra/Templates/32.png" id="1_105sx"]
-[ext_resource type="Script" uid="uid://cjxvyltk8os3f" path="res://Assets/Entities/Cat/cat.gd" id="1_j4sc4"]
+[ext_resource type="Script" uid="uid://d2ftjylr4suxr" path="res://Assets/Entities/Cat/gdfgdfgsf.gd" id="1_gd3th"]
+[ext_resource type="Texture2D" uid="uid://bwnff0oa6v47v" path="res://Assets/Entities/Cat/Cat1.png" id="2_j4sc4"]
+[ext_resource type="Texture2D" uid="uid://b2kqnnoefb6tu" path="res://Assets/Entities/Cat/Cat_normal.png" id="3_gd3th"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j4sc4"]
 radius = 16.0
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_b5tg2"]
+diffuse_texture = ExtResource("2_j4sc4")
+normal_texture = ExtResource("3_gd3th")
+
 [node name="Cat" type="CharacterBody2D" unique_id=1802388711]
 collision_layer = 2
 collision_mask = 3
-script = ExtResource("1_j4sc4")
-time = 1.5
+script = ExtResource("1_gd3th")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=766770545]
 z_index = 1
 shape = SubResource("CircleShape2D_j4sc4")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1823408163]
-texture = ExtResource("1_105sx")
-
 [node name="Timer" type="Timer" parent="." unique_id=1898042677]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1950965130]
+texture = SubResource("CanvasTexture_b5tg2")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

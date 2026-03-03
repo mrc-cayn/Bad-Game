@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://caqbrx0o1oqcn" path="res://Assets/Entities/Button/button.tscn" id="7_eli8m"]
 [ext_resource type="PackedScene" uid="uid://b7tpcbkheqk6v" path="res://Assets/Entities/Launcher/launcher.tscn" id="8_buxh2"]
 [ext_resource type="PackedScene" uid="uid://qyu3so5t3ssw" path="res://managers/Scene/win_hitbox.tscn" id="8_pv0ma"]
+[ext_resource type="Texture2D" uid="uid://cjrpwqmrjo2da" path="res://extra/abstract-luxury-plain-blur-grey-black-gradient-used-as-background-studio-wall-display-your-products.jpg" id="9_3u6fb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pv0ma"]
 texture = ExtResource("2_3u6fb")
@@ -86,3 +87,19 @@ text = "Press the buttons and guide the cat"
 
 [node name="Win_hitbox" parent="." unique_id=1067213929 instance=ExtResource("8_pv0ma")]
 position = Vector2(-392, -64)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=13008821]
+scale = Vector2(0.2, 0.2)
+energy = 1.33
+texture = ExtResource("9_3u6fb")
+texture_scale = 0.4
+height = 112.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="." unique_id=1718864490]
+position = Vector2(-392, 151.99998)
+scale = Vector2(0.2, 0.2)
+energy = 1.33
+blend_mode = 1
+texture = ExtResource("9_3u6fb")
+texture_scale = 0.4
+height = 112.0
