@@ -8,10 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://dsskccmp3pta4" path="res://Assets/Entities/Button/check_button.tscn" id="6_vo84n"]
 [ext_resource type="PackedScene" uid="uid://caqbrx0o1oqcn" path="res://Assets/Entities/Button/button.tscn" id="7_mkba3"]
 [ext_resource type="PackedScene" uid="uid://b7tpcbkheqk6v" path="res://Assets/Entities/Launcher/launcher.tscn" id="8_0r6au"]
-[ext_resource type="PackedScene" uid="uid://qyu3so5t3ssw" path="res://managers/Scene/win_hitbox.tscn" id="8_yid6p"]
+[ext_resource type="PackedScene" uid="uid://qyu3so5t3ssw" path="res://Assets/Entities/Win_hitbox/win_hitbox.tscn" id="8_yid6p"]
 [ext_resource type="Texture2D" uid="uid://d37vlad6dhtsn" path="res://extra/Slope.png" id="10_s16mh"]
+[ext_resource type="Texture2D" uid="uid://cs6jmumn3njav" path="res://extra/slope_16.png" id="11_hstm6"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yid6p"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gpnf3"]
 texture = ExtResource("2_yid6p")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -25,17 +26,23 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_b2t16"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_yid6p")
+sources/0 = SubResource("TileSetAtlasSource_gpnf3")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s16mh"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vo84n"]
 texture = ExtResource("10_s16mh")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(4, -4, 4, 4, -4, 4)
 
-[sub_resource type="TileSet" id="TileSet_gpnf3"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mkba3"]
+texture = ExtResource("11_hstm6")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_0r6au"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_s16mh")
+sources/0 = SubResource("TileSetAtlasSource_vo84n")
+sources/1 = SubResource("TileSetAtlasSource_mkba3")
 
 [node name="Template" type="Node2D" unique_id=333734705]
 
@@ -84,6 +91,8 @@ position = Vector2(248, 52)
 position = Vector2(-24, -256)
 rotation = -1.5707964
 
-[node name="Slopes" type="TileMap" parent="." unique_id=827789692]
-tile_set = SubResource("TileSet_gpnf3")
+[node name="Slopes" type="TileMap" parent="." unique_id=49761296]
+position = Vector2(24, 24)
+tile_set = SubResource("TileSet_0r6au")
 format = 2
+layer_0/tile_data = PackedInt32Array(589822, 1, 0)

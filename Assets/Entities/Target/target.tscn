@@ -1,30 +1,10 @@
 [gd_scene format=3 uid="uid://1agrttq1rbs3"]
 
 [ext_resource type="Texture2D" uid="uid://c2oihgex0vb7u" path="res://extra/Templates/16.png" id="1_uc4jj"]
-[ext_resource type="Texture2D" uid="uid://cgnxux5cey47v" path="res://extra/Templates/8.png" id="2_uggih"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qsbq"]
-size = Vector2(5.3333335, 24.888887)
+[node name="target" type="Area2D" unique_id=1132278741]
 
-[node name="Target" type="Sprite2D" unique_id=777876796 groups=["target"]]
-self_modulate = Color(0.17710002, 0.77, 0.36485165, 1)
-scale = Vector2(3, 4.5)
-texture = ExtResource("1_uc4jj")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1549886805]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=993374516]
-position = Vector2(10.666667, -5.3333344)
-shape = SubResource("RectangleShape2D_7qsbq")
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=757331130]
-modulate = Color(0.9666667, 1, 0, 1)
-self_modulate = Color(0.89411765, 0.92156863, 0.14901961, 1)
-position = Vector2(10.666666, -16)
-scale = Vector2(0.5, 0.3611111)
-texture = ExtResource("2_uggih")
-
-[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D" unique_id=762348410]
-position = Vector2(10.666666, -6)
-scale = Vector2(0.33333337, 0.5833334)
+[node name="Target" type="Sprite2D" parent="." unique_id=777876796 groups=["target"]]
+self_modulate = Color(0.9, 1, 0, 1)
+scale = Vector2(1.5, 2)
 texture = ExtResource("1_uc4jj")

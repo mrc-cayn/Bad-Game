@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dqyoa5yphc7c"]
+
+[ext_resource type="Script" uid="uid://bvrq2phj2ale4" path="res://Assets/Entities/kill area/kill_area.gd" id="1_yehap"]
+
+[node name="Kill area" type="Area2D" unique_id=439772012]
+script = ExtResource("1_yehap")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
