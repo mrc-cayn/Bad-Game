@@ -9,3 +9,12 @@ func  _process(delta: float) -> void:
 		await get_tree().create_timer(1.5,true,false,true).timeout
 		get_tree().reload_current_scene()
 		Engine.time_scale = 1
+		death = false
+	
+	#CHEEEEEEEEEEEEEETSSSSSSSSSSS
+	if Input.is_action_just_pressed("ui_page_up"):
+		Current_level += 1
+		print(Current_level)
+	if Input.is_action_just_pressed("ui_page_down"):
+		Current_level -= 1
+		print(Current_level)
