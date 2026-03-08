@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://d37vlad6dhtsn" path="res://extra/Slope.png" id="10_s16mh"]
 [ext_resource type="Texture2D" uid="uid://cs6jmumn3njav" path="res://extra/slope_16.png" id="11_hstm6"]
 [ext_resource type="PackedScene" uid="uid://4v8phbxfegj7" path="res://Assets/Entities/PIoan/poiaon.tscn" id="12_gpnf3"]
+[ext_resource type="PackedScene" uid="uid://bau25nc0g48y2" path="res://Assets/Entities/Conver/conver.tscn" id="13_vo84n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vo84n"]
 texture = ExtResource("2_yid6p")
@@ -48,7 +49,7 @@ sources/1 = SubResource("TileSetAtlasSource_0r6au")
 [node name="Template" type="Node2D" unique_id=333734705]
 
 [node name="Cat" parent="." unique_id=1802388711 instance=ExtResource("1_4g7yr")]
-position = Vector2(-280, -268)
+position = Vector2(-192, 96)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1463538652]
 z_index = 1
@@ -99,3 +100,7 @@ rotation = 3.1415927
 
 [node name="poiaon" parent="." unique_id=1683793060 instance=ExtResource("12_gpnf3")]
 position = Vector2(48, -264)
+
+[node name="Conver" parent="." unique_id=651640355 instance=ExtResource("13_vo84n")]
+position = Vector2(191.99998, -215.99997)
+scale = Vector2(12.900001, 2.1000001)

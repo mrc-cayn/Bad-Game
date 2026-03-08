@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 	distance(120,0.8)
 	distance(150,0.6)
 	distance(200,0.1)
-	print(position.distance_to(get_global_mouse_position()))
+	#print(position.distance_to(get_global_mouse_position()))
 	pass
 
 func distance(distance,increment):

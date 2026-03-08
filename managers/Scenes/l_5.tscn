@@ -73,31 +73,26 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(56, 40)
 velocity = 550
 
-[node name="Launcher8" parent="." unique_id=1042045838 instance=ExtResource("8_pkx47")]
-position = Vector2(-296, -232)
-rotation = 1.5707964
-velocity = 800
-
 [node name="Launcher9" parent="." unique_id=594993427 instance=ExtResource("8_pkx47")]
 position = Vector2(-296, -264)
 rotation = 1.5707964
 velocity = 800
 
 [node name="Launcher2" parent="." unique_id=1895463784 instance=ExtResource("8_pkx47")]
-position = Vector2(288, -104)
+position = Vector2(296, -104)
 velocity = 600
 
 [node name="Launcher3" parent="." unique_id=503144206 instance=ExtResource("8_pkx47")]
-position = Vector2(312, -240)
+position = Vector2(312, -224)
 rotation = 4.712389
 dir = Vector2(-1, 0)
-velocity = 1000
+velocity = 1500
 
 [node name="Launcher7" parent="." unique_id=1346991228 instance=ExtResource("8_pkx47")]
 position = Vector2(40, -288)
 rotation = 3.1415927
 dir = Vector2(-1, 0)
-velocity = 1000
+velocity = 1400
 
 [node name="Slopes" type="TileMap" parent="." unique_id=420447951]
 position = Vector2(24, 24)

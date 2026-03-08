@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://1agrttq1rbs3"]
 
 [ext_resource type="Texture2D" uid="uid://c2oihgex0vb7u" path="res://extra/Templates/16.png" id="1_uc4jj"]
+[ext_resource type="PackedScene" uid="uid://dqyoa5yphc7c" path="res://Assets/Entities/kill area/kill_area.tscn" id="2_uggih"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qsbq"]
 
 [node name="target" type="Area2D" unique_id=1132278741]
 
@@ -8,3 +11,8 @@
 self_modulate = Color(0.9, 1, 0, 1)
 scale = Vector2(1.5, 2)
 texture = ExtResource("1_uc4jj")
+
+[node name="Kill area" parent="." unique_id=439772012 instance=ExtResource("2_uggih")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kill area" unique_id=1247605030]
+shape = SubResource("RectangleShape2D_7qsbq")
