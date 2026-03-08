@@ -8,7 +8,7 @@
 size = Vector2(32, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n54mo"]
-size = Vector2(16, 8)
+size = Vector2(24, 8)
 
 [node name="Launcher" type="Area2D" unique_id=1948171312]
 collision_layer = 3
