@@ -1,0 +1,8 @@
+[gd_resource type="CanvasTexture" format=3 uid="uid://dfsrcuofl7mtq"]
+
+[ext_resource type="Texture2D" uid="uid://bmlemcqp5v0ih" path="res://Assets/Entities/Target/poian-Sheet-export.png" id="1_uj67m"]
+[ext_resource type="Texture2D" uid="uid://dg68gugf7755f" path="res://Assets/Entities/Target/poian_normal-Sheet.png" id="2_uj67m"]
+
+[resource]
+diffuse_texture = ExtResource("1_uj67m")
+normal_texture = ExtResource("2_uj67m")

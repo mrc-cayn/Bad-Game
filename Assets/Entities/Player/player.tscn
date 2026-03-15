@@ -331,7 +331,7 @@ func calculate_speed(p_max_speed, p_friction):
 [sub_resource type="CircleShape2D" id="CircleShape2D_1bvp3"]
 radius = 16.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1053366969]
+[node name="Player" type="CharacterBody2D" unique_id=1053366969 groups=["player"]]
 modulate = Color(0.23031491, 0.23031494, 0.23031494, 1)
 collision_layer = 2
 collision_mask = 3
@@ -346,9 +346,15 @@ friction = 4
 coyote_time = 0.2
 jump_buffer = 0.2
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1861935175]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1861935175 groups=["player"]]
 z_index = 1
 shape = SubResource("CircleShape2D_1bvp3")
 
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1090670902]
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1090670902 groups=["player"]]
 texture = ExtResource("1_l8h54")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=822064906 groups=["player"]]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1604398851 groups=["player"]]
+z_index = 1
+shape = SubResource("CircleShape2D_1bvp3")

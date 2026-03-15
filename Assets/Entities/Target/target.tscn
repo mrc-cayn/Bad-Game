@@ -3,16 +3,34 @@
 [ext_resource type="Texture2D" uid="uid://c2oihgex0vb7u" path="res://extra/Templates/16.png" id="1_uc4jj"]
 [ext_resource type="PackedScene" uid="uid://dqyoa5yphc7c" path="res://Assets/Entities/kill area/kill_area.tscn" id="2_uggih"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qsbq"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uggih"]
+size = Vector2(16, 24)
 
-[node name="target" type="Area2D" unique_id=1132278741]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qsbq"]
+size = Vector2(20, 28)
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=557572111 groups=["target"]]
+collision_layer = 3
+collision_mask = 3
+mass = 0.1
+
+[node name="target" type="Area2D" parent="." unique_id=1132278741 groups=["target"]]
+position = Vector2(-32, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="target" unique_id=1890344251 groups=["target"]]
+position = Vector2(32, -4)
+shape = SubResource("RectangleShape2D_uggih")
 
 [node name="Target" type="Sprite2D" parent="." unique_id=777876796 groups=["target"]]
 self_modulate = Color(0.9, 1, 0, 1)
-scale = Vector2(1.5, 2)
+scale = Vector2(0.99999994, 1.5)
 texture = ExtResource("1_uc4jj")
 
 [node name="Kill area" parent="." unique_id=439772012 instance=ExtResource("2_uggih")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Kill area" unique_id=1247605030]
 shape = SubResource("RectangleShape2D_7qsbq")
+debug_color = Color(1, 0.46733332, 0.060000002, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=124275859 groups=["target"]]
+shape = SubResource("RectangleShape2D_uggih")

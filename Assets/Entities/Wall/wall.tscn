@@ -43,7 +43,7 @@ _data = {
 }
 
 [node name="Wall" type="StaticBody2D" unique_id=1816247195]
-z_index = -1
+z_index = 1
 position = Vector2(16, 16)
 script = ExtResource("1_3jvos")
 target_height = 64.0

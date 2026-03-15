@@ -1,15 +1,65 @@
 [gd_scene format=3 uid="uid://caqbrx0o1oqcn"]
 
 [ext_resource type="Script" uid="uid://b06x7gnhix5te" path="res://Assets/Entities/Button/button.gd" id="1_k38lq"]
+[ext_resource type="Texture2D" uid="uid://ruj62wnjfbgp" path="res://Assets/Entities/Button/Sprite-0001-Sheet.png" id="2_x1m7j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1m7j"]
+atlas = ExtResource("2_x1m7j")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jn282"]
+atlas = ExtResource("2_x1m7j")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0tri"]
+atlas = ExtResource("2_x1m7j")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ctc2"]
+atlas = ExtResource("2_x1m7j")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jn282"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1m7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jn282")
+}],
+"loop": false,
+"name": &"Off",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0tri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ctc2")
+}],
+"loop": false,
+"name": &"On",
+"speed": 24.0
+}]
 
 [node name="button" type="Button" unique_id=19675738]
+self_modulate = Color(1, 1, 1, 0)
 top_level = true
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
+z_index = 3
+offset_left = -32.0
+offset_top = -32.0
 action_mode = 0
 script = ExtResource("1_k38lq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=541516490]
+position = Vector2(16, 16)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_jn282")
+animation = &"Off"
+frame = 1
+frame_progress = 1.0
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
 [connection signal="button_up" from="." to="." method="_on_button_up"]

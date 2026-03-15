@@ -1,15 +1,151 @@
 [gd_scene format=3 uid="uid://dsskccmp3pta4"]
 
-[ext_resource type="Script" uid="uid://lin2xo1ienj8" path="res://Assets/Entities/Button/checkbutton.gd" id="1_ihiit"]
+[ext_resource type="Script" uid="uid://lin2xo1ienj8" path="res://Assets/Entities/Button/CheckButton.gd" id="1_ihiit"]
+[ext_resource type="Texture2D" uid="uid://db03wbe2er5ud" path="res://Assets/Entities/Button/Sprite-0007-Sheet.png" id="2_vgmeo"]
+[ext_resource type="Texture2D" uid="uid://dkx4xb0fmfj6x" path="res://Assets/Sprites/Glow.png" id="3_bi0i1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi0i1"]
+atlas = ExtResource("2_vgmeo")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkp41"]
+atlas = ExtResource("2_vgmeo")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twyn2"]
+atlas = ExtResource("2_vgmeo")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqkdr"]
+atlas = ExtResource("2_vgmeo")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2aucn"]
+atlas = ExtResource("2_vgmeo")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mvf1"]
+atlas = ExtResource("2_vgmeo")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gpt7"]
+atlas = ExtResource("2_vgmeo")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgmeo"]
+atlas = ExtResource("2_vgmeo")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbqtg"]
+atlas = ExtResource("2_vgmeo")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egs6t"]
+atlas = ExtResource("2_vgmeo")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijwpb"]
+atlas = ExtResource("2_vgmeo")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynax0"]
+atlas = ExtResource("2_vgmeo")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gmco"]
+atlas = ExtResource("2_vgmeo")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eybmv"]
+atlas = ExtResource("2_vgmeo")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nbqtg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bi0i1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkp41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twyn2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqkdr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2aucn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mvf1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gpt7")
+}],
+"loop": false,
+"name": &"off_to_on",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgmeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbqtg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egs6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijwpb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynax0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gmco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eybmv")
+}],
+"loop": false,
+"name": &"on_to_off",
+"speed": 24.0
+}]
 
 [node name="CheckButton" type="CheckButton" unique_id=1620363867]
+modulate = Color(0.8392157, 0.7137255, 0.62352943, 1)
+self_modulate = Color(1, 1, 1, 0)
 top_level = true
+z_index = 3
 offset_left = 16.0
 offset_top = -32.0
-offset_right = 64.12781
-offset_bottom = 0.057762146
+offset_right = 60.0
+offset_bottom = -8.0
 rotation = 1.5707964
+mouse_filter = 1
+mouse_behavior_recursive = 2
+mouse_default_cursor_shape = 2
 script = ExtResource("1_ihiit")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1632471975]
+modulate = Color(0.8392157, 0.7137255, 0.62352943, 1)
+position = Vector2(22, 11.999999)
+rotation = -4.712389
+scale = Vector2(0.46875, 0.46874997)
+sprite_frames = SubResource("SpriteFrames_nbqtg")
+animation = &"on_to_off"
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1979294946]
+modulate = Color(0.8392157, 0.7137255, 0.62352943, 1)
+position = Vector2(32, 12)
+scale = Vector2(0.1, 0.1)
+enabled = false
+color = Color(0.18, 1, 0.2893334, 1)
+energy = 0.5
+texture = ExtResource("3_bi0i1")
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
 [connection signal="button_up" from="." to="." method="_on_button_up"]

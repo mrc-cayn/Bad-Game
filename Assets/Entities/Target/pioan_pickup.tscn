@@ -1,0 +1,201 @@
+[gd_scene format=3 uid="uid://cwyfohlq0op2x"]
+
+[ext_resource type="PackedScene" uid="uid://dqyoa5yphc7c" path="res://Assets/Entities/kill area/kill_area.tscn" id="1_86bq8"]
+[ext_resource type="Script" uid="uid://b8u5efwg373d8" path="res://Assets/Entities/Target/pioan_pickup.gd" id="1_r40wk"]
+[ext_resource type="Texture2D" uid="uid://dfsrcuofl7mtq" path="res://Assets/Entities/Target/anim.tres" id="2_ndlvu"]
+[ext_resource type="Texture2D" uid="uid://dkx4xb0fmfj6x" path="res://Assets/Sprites/Glow.png" id="4_qeitg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_esbq3"]
+size = Vector2(20, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r40wk"]
+atlas = ExtResource("2_ndlvu")
+region = Rect2(0, 0, 18, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qeitg"]
+atlas = ExtResource("2_ndlvu")
+region = Rect2(18, 0, 18, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hoa7"]
+atlas = ExtResource("2_ndlvu")
+region = Rect2(36, 0, 18, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_501qu"]
+atlas = ExtResource("2_ndlvu")
+region = Rect2(54, 0, 18, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_smlqv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r40wk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qeitg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hoa7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_501qu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="Animation" id="Animation_ndlvu"]
+resource_name = "Loop"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Kill area:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.5),
+"transitions": PackedFloat32Array(0.36602136, 0.40612593, 4.0000014),
+"update": 0,
+"values": [Vector2(0, -12), Vector2(0, -24), Vector2(0, -28)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.5),
+"transitions": PackedFloat32Array(0.36602136, 0.40612593, 4.0000014),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -12), Vector2(0, -16)]
+}
+
+[sub_resource type="Animation" id="Animation_r40wk"]
+resource_name = "Pick_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qeitg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Kill area:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -12)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6hoa7"]
+_data = {
+&"Loop": SubResource("Animation_ndlvu"),
+&"Pick_up": SubResource("Animation_r40wk"),
+&"RESET": SubResource("Animation_qeitg")
+}
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qeitg"]
+polygon = PackedVector2Array(-6, 4, 6, 4, 5, 13, -5, 13)
+
+[node name="Pioan_pickup" type="Node2D" unique_id=311851250 groups=["target"]]
+script = ExtResource("1_r40wk")
+
+[node name="Kill area" parent="." unique_id=439772012 instance=ExtResource("1_86bq8")]
+visible = false
+position = Vector2(0, -12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kill area" unique_id=1079467691]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_esbq3")
+debug_color = Color(1, 0.46733332, 0.060000002, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1464335335]
+sprite_frames = SubResource("SpriteFrames_smlqv")
+autoplay = "default"
+frame_progress = 0.8870632
+
+[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D" unique_id=376035734]
+position = Vector2(0, -16)
+scale = Vector2(0.125, 0.1875)
+color = Color(0.5333333, 1, 0, 1)
+energy = 0.5
+texture = ExtResource("4_qeitg")
+
+[node name="PointLight2D2" type="PointLight2D" parent="AnimatedSprite2D" unique_id=1948181850]
+scale = Vector2(0.125, 0.1875)
+color = Color(0.5333333, 1, 0, 1)
+energy = 0.5
+texture = ExtResource("4_qeitg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2022540734]
+libraries/ = SubResource("AnimationLibrary_6hoa7")
+autoplay = &"Loop"
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=2079001900]
+occluder = SubResource("OccluderPolygon2D_qeitg")
+
+[connection signal="body_entered" from="Kill area" to="." method="_on_kill_area_body_entered"]
