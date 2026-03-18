@@ -33,11 +33,6 @@ sources/1 = SubResource("TileSetAtlasSource_65eso")
 [node name="Cat" parent="." unique_id=1802388711 instance=ExtResource("1_850iw")]
 position = Vector2(-190, 64)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=2009892417]
-z_index = 1
-position = Vector2(0, -68)
-limit_enabled = false
-
 [node name="TileMap" type="TileMap" parent="." unique_id=608473769]
 modulate = Color(0.43529412, 0.32941177, 0.29803923, 1)
 tile_set = ExtResource("2_jf3li")
@@ -48,7 +43,6 @@ layer_0/tile_data = PackedInt32Array(786412, 0, 0, 786413, 0, 0, 786414, 0, 0, 7
 position = Vector2(304, -72)
 
 [node name="Wall" parent="." unique_id=1816247195 instance=ExtResource("5_jfpfo")]
-z_index = 1
 position = Vector2(-184, 24)
 rotation = 1.5707964
 target_height = 144.0
@@ -61,7 +55,6 @@ anchor_bottom = 0.033333335
 offset_left = -208.0
 offset_top = -8.0
 offset_right = -200.0
-offset_bottom = 0.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Launcher" parent="." unique_id=1948171312 instance=ExtResource("8_22dm0")]

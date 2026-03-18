@@ -1,13 +1,39 @@
 [gd_scene format=3 uid="uid://4v8phbxfegj7"]
 
-[ext_resource type="Texture2D" uid="uid://dvkl1lbucwblx" path="res://extra/Templates/32.png" id="1_a7f3q"]
+[ext_resource type="Texture2D" uid="uid://bjyt853dqcps0" path="res://Assets/Entities/PIoan/Sprite-0002-Sheet.png" id="1_x18xe"]
 [ext_resource type="PackedScene" uid="uid://dqyoa5yphc7c" path="res://Assets/Entities/kill area/kill_area.tscn" id="2_x18xe"]
+[ext_resource type="Texture2D" uid="uid://cl3xh5i4ckbs3" path="res://extra/Sprite-0001.png" id="3_x18xe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmaon"]
+atlas = ExtResource("1_x18xe")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itjpf"]
+atlas = ExtResource("1_x18xe")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5r7gw"]
+atlas = ExtResource("1_x18xe")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xl0ul"]
+atlas = ExtResource("1_x18xe")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hmaon"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_a7f3q")
+"texture": SubResource("AtlasTexture_hmaon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itjpf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5r7gw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xl0ul")
 }],
 "loop": true,
 "name": &"default",
@@ -18,10 +44,19 @@ animations = [{
 size = Vector2(32, 32)
 
 [node name="poiaon" type="AnimatedSprite2D" unique_id=1683793060]
-self_modulate = Color(0.6666666, 1, 0, 1)
+self_modulate = Color(0.8, 0.8, 0.8, 1)
 sprite_frames = SubResource("SpriteFrames_hmaon")
+autoplay = "default"
+frame_progress = 0.90258753
 
 [node name="Kill area" parent="." unique_id=439772012 instance=ExtResource("2_x18xe")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Kill area" unique_id=1743292615]
 shape = SubResource("RectangleShape2D_itjpf")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1175526872]
+self_modulate = Color(0.49108335, 0.83, 0.415, 1)
+position = Vector2(0, -28)
+scale = Vector2(1, 1.5)
+shadow_enabled = true
+texture = ExtResource("3_x18xe")

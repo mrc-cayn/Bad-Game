@@ -12,7 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://cs6jmumn3njav" path="res://extra/slope_16.png" id="10_imt5b"]
 [ext_resource type="TileSet" uid="uid://dm55ioqe4312x" path="res://Assets/Sprites/Lighting.tres" id="11_bh6k1"]
 [ext_resource type="Texture2D" uid="uid://dkx4xb0fmfj6x" path="res://Assets/Sprites/Glow.png" id="12_x0qb8"]
-[ext_resource type="PackedScene" uid="uid://ivjeacoqrml0" path="res://managers/Scenes/Background.tscn" id="13_u1f04"]
+[ext_resource type="Shader" uid="uid://ddxgjcn15adry" path="res://addons/alo transition/transition.gdshader" id="13_buxh2"]
+[ext_resource type="Texture2D" uid="uid://c8wml5k8apt8q" path="res://extra/grid1.png" id="14_h4w78"]
+[ext_resource type="Texture2D" uid="uid://djse0tebdc6hi" path="res://extra/grid.png" id="15_807hf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_imt5b"]
 texture = ExtResource("9_3u6fb")
@@ -29,6 +31,118 @@ texture = ExtResource("10_imt5b")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_imt5b")
 sources/1 = SubResource("TileSetAtlasSource_bh6k1")
+
+[sub_resource type="Animation" id="Animation_liusx"]
+resource_name = "Loop"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-128, -128)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/Sprite2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(128, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_bg4fu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/Sprite2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s588d"]
+_data = {
+&"Loop": SubResource("Animation_liusx"),
+&"RESET": SubResource("Animation_bg4fu")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6n3hr"]
+shader = ExtResource("13_buxh2")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 0
+shader_parameter/position = Vector2(0, 0)
+shader_parameter/invert = false
+shader_parameter/grid_size = Vector2(1, 1)
+shader_parameter/rotation_angle = 0.0
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 0.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 6
+shader_parameter/shape_feather = 0.1
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 0.0
+shader_parameter/progress_bias = Vector2(0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvyc2"]
+atlas = ExtResource("14_h4w78")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nq8og"]
+shader = ExtResource("13_buxh2")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 0
+shader_parameter/position = Vector2(0, 0)
+shader_parameter/invert = false
+shader_parameter/grid_size = Vector2(1, 1)
+shader_parameter/rotation_angle = 0.0
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 0.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 6
+shader_parameter/shape_feather = 0.1
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 0.0
+shader_parameter/progress_bias = Vector2(0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2b0a7"]
+atlas = ExtResource("15_807hf")
 
 [node name="L_1" type="Node2D" unique_id=771082605]
 
@@ -101,7 +215,7 @@ tile_set = SubResource("TileSet_bh6k1")
 format = 2
 
 [node name="Pioan_pickup" parent="." unique_id=80631699 instance=ExtResource("10_bh6k1")]
-position = Vector2(256, 8)
+position = Vector2(256, -8)
 
 [node name="Lighting" type="TileMap" parent="." unique_id=1094443040]
 z_index = 5
@@ -114,14 +228,31 @@ layer_0/tile_data = PackedInt32Array(-262127, 4, 1610612736, -1245198, 65540, 0,
 position = Vector2(280, -56.000004)
 scale = Vector2(0.5625, 0.375)
 color = Color(1, 0.86050004, 0.06999999, 1)
-shadow_enabled = true
 texture = ExtResource("12_x0qb8")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Lighting" unique_id=1638284504]
 position = Vector2(-152, -296)
 scale = Vector2(0.875, 0.625)
 color = Color(1, 0.86050004, 0.06999999, 1)
-shadow_enabled = true
 texture = ExtResource("12_x0qb8")
 
-[node name="AnimationPlayer" parent="." unique_id=1080574321 instance=ExtResource("13_u1f04")]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=443194755]
+libraries/ = SubResource("AnimationLibrary_s588d")
+autoplay = &"Loop"
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimationPlayer" unique_id=1902293554]
+modulate = Color(1, 1, 1, 0.6862745)
+self_modulate = Color(0.5, 0.38958335, 0.23500001, 1)
+z_index = -9
+z_as_relative = false
+material = SubResource("ShaderMaterial_6n3hr")
+scale = Vector2(32, 32)
+texture = SubResource("AtlasTexture_fvyc2")
+
+[node name="Sprite2D2" type="Sprite2D" parent="AnimationPlayer" unique_id=542246282]
+modulate = Color(1, 1, 1, 0.6862745)
+self_modulate = Color(0.6901961, 0.65882355, 0.5176471, 1)
+z_index = -10
+material = SubResource("ShaderMaterial_nq8og")
+scale = Vector2(32, 32)
+texture = SubResource("AtlasTexture_2b0a7")

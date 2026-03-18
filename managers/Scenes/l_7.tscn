@@ -31,11 +31,6 @@ sources/1 = SubResource("TileSetAtlasSource_qckcx")
 [node name="Cat" parent="." unique_id=1802388711 instance=ExtResource("1_t5aqf")]
 position = Vector2(-32, 56)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=989798256]
-z_index = 1
-position = Vector2(0, -68)
-limit_enabled = false
-
 [node name="TileMap" type="TileMap" parent="." unique_id=1268692966]
 modulate = Color(0.43529412, 0.32941177, 0.29803923, 1)
 tile_set = ExtResource("2_raycb")

@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://ivjeacoqrml0"]
+
+[ext_resource type="Shader" uid="uid://ddxgjcn15adry" path="res://addons/alo transition/transition.gdshader" id="1_cxvln"]
+[ext_resource type="Texture2D" uid="uid://c8wml5k8apt8q" path="res://extra/grid1.png" id="2_grbv0"]
+[ext_resource type="Texture2D" uid="uid://djse0tebdc6hi" path="res://extra/grid.png" id="3_gwbwd"]
+
+[sub_resource type="Animation" id="Animation_liusx"]
+resource_name = "Loop"
+length = 20.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-128, -128)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/Sprite2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(128, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_bg4fu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/Sprite2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s588d"]
+_data = {
+&"Loop": SubResource("Animation_liusx"),
+&"RESET": SubResource("Animation_bg4fu")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6n3hr"]
+shader = ExtResource("1_cxvln")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 0
+shader_parameter/position = Vector2(0, 0)
+shader_parameter/invert = false
+shader_parameter/grid_size = Vector2(1, 1)
+shader_parameter/rotation_angle = 0.0
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 0.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 6
+shader_parameter/shape_feather = 0.1
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 0.0
+shader_parameter/progress_bias = Vector2(0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvyc2"]
+atlas = ExtResource("2_grbv0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nq8og"]
+shader = ExtResource("1_cxvln")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 0
+shader_parameter/position = Vector2(0, 0)
+shader_parameter/invert = false
+shader_parameter/grid_size = Vector2(1, 1)
+shader_parameter/rotation_angle = 0.0
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 0.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 6
+shader_parameter/shape_feather = 0.1
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 0.0
+shader_parameter/progress_bias = Vector2(0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2b0a7"]
+atlas = ExtResource("3_gwbwd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" unique_id=1080574321]
+libraries/ = SubResource("AnimationLibrary_s588d")
+autoplay = &"Loop"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1773375651]
+modulate = Color(1, 1, 1, 0.5882353)
+self_modulate = Color(0.8, 0.6336, 0.41599998, 1)
+z_index = -9
+z_as_relative = false
+material = SubResource("ShaderMaterial_6n3hr")
+scale = Vector2(64, 64)
+texture = SubResource("AtlasTexture_fvyc2")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1552034541]
+modulate = Color(1, 1, 1, 0.5882353)
+self_modulate = Color(0.6901961, 0.65882355, 0.5176471, 1)
+z_index = -10
+material = SubResource("ShaderMaterial_nq8og")
+scale = Vector2(64, 64)
+texture = SubResource("AtlasTexture_2b0a7")

@@ -5,6 +5,12 @@ var power:bool = false
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var point_light_2d: PointLight2D = $PointLight2D
 
+func _ready() -> void:
+	if state == 1 :
+		button_pressed = true
+	if state == -1 :
+		button_pressed = false
+
 func _on_toggled(toggled_on: bool) -> void:
 	state = -state
 	if state == 1 :

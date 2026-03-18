@@ -4,15 +4,21 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var area_2d: Area2D = $Area2D
 @onready var timer: Timer = $Timer
+@onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
 @onready var coyote_timer = Timer.new()
-@export var coyote_time : float = 0.15
+@onready var camera_2d: Camera2D = $Camera2D
 @onready var is_coyote_time_enabled = coyote_time > 0
+@export var coyote_time : float = 0.15
 @export var friction :float = 2
 @export var speed:float = 2
+@export var shake_amount:float = 20
 @export var max_speed:float = 150
 @export var jump_velocity:int = 4
 @export var time:float = 2
 @export var gravity:int = 5
+var motion = Vector2()
+var motion_previous = Vector2()
+var hit_the_ground = false
 var orignal_speed = 0
 var orignal_max_speed = 0
 var dir : Vector2 = Vector2.ZERO
@@ -34,8 +40,17 @@ func _process(delta: float) -> void:
 		distance(i,25/i)
 		pass
 	animate()
+	
+	if G.death == true:
+		death()
 	#print(position.distance_to(get_global_mouse_position()))
 	pass
+
+func death():
+	camera_2d.shake(shake_amount)
+	collision_shape_2d.disabled
+	animated_sprite_2d.speed_scale = Engine.time_scale * animated_sprite_2d.speed_scale  
+	animated_sprite_2d.play("Death")
 
 func distance(distance,increment):
 		if position.distance_to(get_global_mouse_position()) < distance :
@@ -43,12 +58,31 @@ func distance(distance,increment):
 			max_speed = orignal_max_speed + (orignal_max_speed * increment)
 
 func  _physics_process(delta: float) -> void:
+	motion.y += gravity 
 	dir = position.direction_to(get_global_mouse_position())
 	#print(dir)
 	move()
 	if is_on_floor():
 		coyote_timer.start()
 		velocity.x = lerp(velocity.x,0.0,friction*delta)
+	
+	motion_previous = motion
+
+	
+	if not is_on_floor():
+		hit_the_ground = false
+		$AnimatedSprite2D.scale.y = remap(abs(motion.y), 0, abs(jump_velocity * gravity), 0.97, 1.03)
+		$AnimatedSprite2D.scale.x = remap(abs(motion.y), 0, abs(jump_velocity * gravity), 1.05, 0.95)
+	
+	
+	if not hit_the_ground and is_on_floor():
+
+		hit_the_ground = true
+		$AnimatedSprite2D.scale.x = remap(abs(motion_previous.y), 0, abs(1700), 1.1, 1.2)
+		$AnimatedSprite2D.scale.y = remap(abs(motion_previous.y), 0, abs(1700), 0.8, 0.5)
+	$AnimatedSprite2D.scale.x = lerp($AnimatedSprite2D.scale.x, 1.0, 1 - pow(0.01, delta))
+	$AnimatedSprite2D.scale.y = lerp($AnimatedSprite2D.scale.y, 1.0, 1 - pow(0.01, delta))
+	
 	move_and_slide()
 
 func animate():
@@ -93,10 +127,13 @@ func move():
 	if is_on_floor() == false:
 		velocity.y += gravity
 		velocity.x += dir.x * speed
+		gpu_particles_2d.emitting = false
+		
 	if is_on_floor():
 		velocity.x += dir.x * speed
 		velocity.x = min(velocity.x,max_speed)
 		velocity.x = max(velocity.x,-max_speed)
+		gpu_particles_2d.emitting = true
 
 func _on_timer_timeout() -> void:
 	if is_coyote_timer_running() or is_on_floor():
@@ -109,6 +146,7 @@ func _on_timer_timeout() -> void:
 func jump():
 	velocity.y -= jump_velocity * gravity
 	coyote_timer.stop()
+	motion.y = jump_velocity * gravity
 
 
 

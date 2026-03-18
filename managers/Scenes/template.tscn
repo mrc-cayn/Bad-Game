@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://cs6jmumn3njav" path="res://extra/slope_16.png" id="11_hstm6"]
 [ext_resource type="PackedScene" uid="uid://4v8phbxfegj7" path="res://Assets/Entities/PIoan/poiaon.tscn" id="12_gpnf3"]
 [ext_resource type="PackedScene" uid="uid://bau25nc0g48y2" path="res://Assets/Entities/Conver/conver.tscn" id="13_vo84n"]
+[ext_resource type="TileSet" uid="uid://dm55ioqe4312x" path="res://Assets/Sprites/Lighting.tres" id="14_0r6au"]
+[ext_resource type="Texture2D" uid="uid://dkx4xb0fmfj6x" path="res://Assets/Sprites/Glow.png" id="15_1n2qq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mkba3"]
 texture = ExtResource("10_s16mh")
@@ -88,3 +90,30 @@ position = Vector2(48, -264)
 [node name="Conver" parent="." unique_id=651640355 instance=ExtResource("13_vo84n")]
 position = Vector2(176, 47.999996)
 scale = Vector2(12.900001, 2.1000001)
+
+[node name="Lighting2" type="TileMap" parent="." unique_id=1894299650]
+z_index = 5
+position = Vector2(24, 24)
+tile_set = ExtResource("14_0r6au")
+format = 2
+layer_0/tile_data = PackedInt32Array(262123, 6, 1342177280, -393237, 4, 1342177281)
+
+[node name="small" type="PointLight2D" parent="Lighting2" unique_id=292428423]
+position = Vector2(-328, -104)
+scale = Vector2(0.37499997, 0.375)
+color = Color(1, 0.86050004, 0.06999999, 1)
+energy = 0.3
+texture = ExtResource("15_1n2qq")
+
+[node name="Mid" type="PointLight2D" parent="Lighting2" unique_id=693919378]
+position = Vector2(-23.999996, 57)
+scale = Vector2(0.56249994, 0.59375)
+color = Color(1, 0.86050004, 0.06999999, 1)
+energy = 0.5
+texture = ExtResource("15_1n2qq")
+
+[node name="Tube" type="PointLight2D" parent="Lighting2" unique_id=1193954760]
+position = Vector2(200.00002, -152)
+scale = Vector2(0.875, 0.625)
+color = Color(1, 0.86050004, 0.06999999, 1)
+texture = ExtResource("15_1n2qq")
