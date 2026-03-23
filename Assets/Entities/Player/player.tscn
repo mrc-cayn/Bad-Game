@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cuif2fi3s56cq"]
 
 [ext_resource type="Texture2D" uid="uid://ce8bbtkhiqrx6" path="res://Assets/Entities/Cat/Sprite-0002.png" id="1_0yqqc"]
+[ext_resource type="Shader" uid="uid://cffknj31wnlfc" path="res://globals/outline.gdshader" id="1_fj8al"]
 [ext_resource type="Texture2D" uid="uid://dkx4xb0fmfj6x" path="res://Assets/Sprites/Glow.png" id="2_urkqf"]
 
 [sub_resource type="GDScript" id="GDScript_0xm2m"]
@@ -348,6 +349,11 @@ func calculate_speed(p_max_speed, p_friction):
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_urkqf"]
 size = Vector2(32, 32)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_avko0"]
+shader = ExtResource("1_fj8al")
+shader_parameter/outline_cotor = Color(0, 0, 0, 0.1)
+shader_parameter/corner_pixet = false
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_1bvp3"]
 radius = 16.0
 
@@ -405,6 +411,7 @@ z_index = 1
 shape = SubResource("RectangleShape2D_urkqf")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1090670902 groups=["player"]]
+material = SubResource("ShaderMaterial_avko0")
 texture = ExtResource("1_0yqqc")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=822064906 groups=["player"]]
