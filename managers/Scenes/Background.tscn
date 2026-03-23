@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://ivjeacoqrml0"]
 
 [ext_resource type="Shader" uid="uid://ddxgjcn15adry" path="res://addons/alo transition/transition.gdshader" id="1_cxvln"]
+[ext_resource type="Script" uid="uid://bx3h0fwcu727k" path="res://managers/Scenes/background.gd" id="1_grbv0"]
 [ext_resource type="Texture2D" uid="uid://c8wml5k8apt8q" path="res://extra/grid1.png" id="2_grbv0"]
 [ext_resource type="Texture2D" uid="uid://djse0tebdc6hi" path="res://extra/grid.png" id="3_gwbwd"]
+[ext_resource type="Texture2D" uid="uid://dr7fjf0tpsat7" path="res://extra/Templates/64.png" id="5_gwbwd"]
 
 [sub_resource type="Animation" id="Animation_liusx"]
 resource_name = "Loop"
@@ -11,7 +13,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/Sprite2D:position")
+tracks/0/path = NodePath("AnimationPlayer/Node2D/Sprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -23,7 +25,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/Sprite2D2:position")
+tracks/1/path = NodePath("AnimationPlayer/Node2D/Sprite2D2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -33,12 +35,15 @@ tracks/1/keys = {
 "values": [Vector2(0, 0), Vector2(128, 128)]
 }
 
+[sub_resource type="Animation" id="Animation_gwbwd"]
+resource_name = "Move"
+
 [sub_resource type="Animation" id="Animation_bg4fu"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/Sprite2D:position")
+tracks/0/path = NodePath("AnimationPlayer/Node2D/Sprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -50,7 +55,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/Sprite2D2:position")
+tracks/1/path = NodePath("AnimationPlayer/Node2D/Sprite2D2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -63,6 +68,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s588d"]
 _data = {
 &"Loop": SubResource("Animation_liusx"),
+&"Move": SubResource("Animation_gwbwd"),
 &"RESET": SubResource("Animation_bg4fu")
 }
 
@@ -119,20 +125,30 @@ atlas = ExtResource("3_gwbwd")
 [node name="AnimationPlayer" type="AnimationPlayer" unique_id=1080574321]
 libraries/ = SubResource("AnimationLibrary_s588d")
 autoplay = &"Loop"
+script = ExtResource("1_grbv0")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1773375651]
-modulate = Color(1, 1, 1, 0.5882353)
-self_modulate = Color(0.8, 0.6336, 0.41599998, 1)
+[node name="Node2D" type="Node2D" parent="." unique_id=1040214145]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=1773375651]
+self_modulate = Color(0.8, 0.6336, 0.41599998, 0.5882353)
 z_index = -9
-z_as_relative = false
 material = SubResource("ShaderMaterial_6n3hr")
 scale = Vector2(64, 64)
 texture = SubResource("AtlasTexture_fvyc2")
 
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1552034541]
-modulate = Color(1, 1, 1, 0.5882353)
-self_modulate = Color(0.6901961, 0.65882355, 0.5176471, 1)
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D" unique_id=1552034541]
+self_modulate = Color(0.69, 0.65837497, 0.5175, 0.5882353)
 z_index = -10
 material = SubResource("ShaderMaterial_nq8og")
 scale = Vector2(64, 64)
 texture = SubResource("AtlasTexture_2b0a7")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Node2D" unique_id=1127334656]
+self_modulate = Color(0.39, 0.326625, 0.2379, 1)
+light_mask = 7
+visibility_layer = 7
+z_index = -20
+z_as_relative = false
+position = Vector2(8.000008, -4.5776367e-05)
+scale = Vector2(26.625004, 19.125)
+texture = ExtResource("5_gwbwd")

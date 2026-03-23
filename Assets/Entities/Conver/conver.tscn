@@ -10,6 +10,7 @@ size = Vector2(16, 9)
 size = Vector2(16, 8)
 
 [node name="Conver" type="Area2D" unique_id=651640355]
+z_index = 1
 collision_mask = 3
 script = ExtResource("1_bbij5")
 

@@ -15,22 +15,25 @@
 [ext_resource type="PackedScene" uid="uid://bau25nc0g48y2" path="res://Assets/Entities/Conver/conver.tscn" id="13_vo84n"]
 [ext_resource type="TileSet" uid="uid://dm55ioqe4312x" path="res://Assets/Sprites/Lighting.tres" id="14_0r6au"]
 [ext_resource type="Texture2D" uid="uid://dkx4xb0fmfj6x" path="res://Assets/Sprites/Glow.png" id="15_1n2qq"]
+[ext_resource type="PackedScene" uid="uid://ivjeacoqrml0" path="res://managers/Scenes/Background.tscn" id="16_1n2qq"]
+[ext_resource type="TileSet" uid="uid://dik32ss1lp4eg" path="res://Assets/Sprites/Metal.tres" id="17_b2t16"]
+[ext_resource type="PackedScene" uid="uid://cwyfohlq0op2x" path="res://Assets/Entities/Target/pioan_pickup.tscn" id="18_gr5xg"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mkba3"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d7wfj"]
 texture = ExtResource("10_s16mh")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(4, -4, 4, 4, -4, 4)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0r6au"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ybn1x"]
 texture = ExtResource("11_hstm6")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_0r6au"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_mkba3")
-sources/1 = SubResource("TileSetAtlasSource_0r6au")
+sources/0 = SubResource("TileSetAtlasSource_d7wfj")
+sources/1 = SubResource("TileSetAtlasSource_ybn1x")
 
 [node name="Template" type="Node2D" unique_id=333734705]
 
@@ -117,3 +120,15 @@ position = Vector2(200.00002, -152)
 scale = Vector2(0.875, 0.625)
 color = Color(1, 0.86050004, 0.06999999, 1)
 texture = ExtResource("15_1n2qq")
+
+[node name="AnimationPlayer" parent="." unique_id=1080574321 instance=ExtResource("16_1n2qq")]
+
+[node name="TileMap2" type="TileMap" parent="." unique_id=807029400]
+self_modulate = Color(0.75, 0.75, 0.75, 1)
+z_index = 1
+position = Vector2(32, 32)
+tile_set = ExtResource("17_b2t16")
+format = 2
+
+[node name="Pioan_pickup" parent="." unique_id=311851250 instance=ExtResource("18_gr5xg")]
+position = Vector2(256, 8)

@@ -1,16 +1,6 @@
 [gd_scene format=3 uid="uid://ctkkx724gkoga"]
 
 [ext_resource type="Script" uid="uid://7e8s4sx6nj3l" path="res://globals/global.gd" id="1_mqaw6"]
-[ext_resource type="Texture2D" uid="uid://dr7fjf0tpsat7" path="res://extra/Templates/64.png" id="2_lyb5f"]
 
 [node name="Global" type="Node" unique_id=1263526524]
 script = ExtResource("1_mqaw6")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2099923903]
-self_modulate = Color(0.39, 0.326625, 0.2379, 1)
-light_mask = 7
-visibility_layer = 7
-z_index = -20
-position = Vector2(1.5258789e-05, 7.9999847)
-scale = Vector2(26.625004, 19.125)
-texture = ExtResource("2_lyb5f")

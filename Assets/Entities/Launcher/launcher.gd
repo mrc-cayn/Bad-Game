@@ -5,16 +5,20 @@ extends Area2D
 @export var velocity := 500
 @export var velocity_static := 5000
 @onready var arrow: Sprite2D = $arrow
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+var test : RigidBody2D
 
 func _ready() -> void:
-	arrow.global_rotation = dir.angle()
-
-	#dir = Vector2(dir)
+	arrow.global_rotation = dir.angle() + PI/2
+	#test.linear_velocity
 	pass
 
 func _on_body_entered(body : Node2D) -> void:
 	if body.is_in_group("player"):
+		animated_sprite_2d.play("default")
 		body.velocity += dir*velocity
+		
 	if body.is_in_group("target"):
-		body.apply_central_force(dir*velocity_static)
+		animated_sprite_2d.play("default")
+		body.apply_central_force(dir*velocity_static + body.linear_velocity.rotated(PI))
 	pass # Replace with function body.

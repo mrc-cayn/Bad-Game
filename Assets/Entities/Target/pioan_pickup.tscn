@@ -44,6 +44,45 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="Curve" id="Curve_qeitg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5681818, 0.64606744), -1.1979254, -1.1979254, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_6hoa7"]
+curve = SubResource("Curve_qeitg")
+
+[sub_resource type="Gradient" id="Gradient_501qu"]
+colors = PackedColorArray(0.31363332, 0.97, 0.291, 1, 0, 0.35, 0.058333278, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_smlqv"]
+gradient = SubResource("Gradient_501qu")
+
+[sub_resource type="Curve" id="Curve_q6ox7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_71jyx"]
+curve = SubResource("Curve_q6ox7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tyxqk"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(5.3, 4, 1)
+angle_min = -179.99998
+angle_max = 180.00002
+direction = Vector3(0, -2, 0)
+spread = 16.0
+initial_velocity_min = 32.0
+initial_velocity_max = 96.0
+scale_min = 0.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_71jyx")
+color_ramp = SubResource("GradientTexture1D_smlqv")
+alpha_curve = SubResource("CurveTexture_6hoa7")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.8
+
 [sub_resource type="Animation" id="Animation_ndlvu"]
 resource_name = "Loop"
 length = 1.5
@@ -159,7 +198,7 @@ _data = {
 }
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qeitg"]
-polygon = PackedVector2Array(-6, 4, 6, 4, 5, 13, -5, 13)
+polygon = PackedVector2Array(-8, 7, -3, -1, -1, -8, -2, -1, -7, 7, -4, 13, 2, 14, 5, 13, 7, 11, 9, 8, 8, 6, 4, -1, 3, -8, 5, -1, 10, 8, 7, 13, 3, 15, 0, 15, -5, 13)
 
 [node name="Pioan_pickup" type="Node2D" unique_id=311851250 groups=["target"]]
 script = ExtResource("1_r40wk")
@@ -191,11 +230,22 @@ color = Color(0.5333333, 1, 0, 1)
 energy = 0.5
 texture = ExtResource("4_qeitg")
 
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="AnimatedSprite2D" unique_id=1271097242]
+amount = 32
+lifetime = 0.5
+speed_scale = 0.5
+fixed_fps = 16
+interpolate = false
+trail_lifetime = 0.05
+trail_sections = 4
+process_material = SubResource("ParticleProcessMaterial_tyxqk")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2022540734]
 libraries/ = SubResource("AnimationLibrary_6hoa7")
 autoplay = &"Loop"
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=2079001900]
+position = Vector2(-1, 0)
 occluder = SubResource("OccluderPolygon2D_qeitg")
 
 [connection signal="body_entered" from="Kill area" to="." method="_on_kill_area_body_entered"]

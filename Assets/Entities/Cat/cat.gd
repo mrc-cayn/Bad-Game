@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
 @onready var coyote_timer = Timer.new()
 @onready var camera_2d: Camera2D = $Camera2D
+@onready var light_occluder_2d: LightOccluder2D = $LightOccluder2D
 @onready var is_coyote_time_enabled = coyote_time > 0
 @export var coyote_time : float = 0.15
 @export var friction :float = 2
@@ -24,7 +25,6 @@ var orignal_max_speed = 0
 var dir : Vector2 = Vector2.ZERO
 
 func  _ready() -> void:
-	
 	timer.wait_time = time
 	timer.start()
 	orignal_speed = speed
@@ -47,8 +47,8 @@ func _process(delta: float) -> void:
 	pass
 
 func death():
+	
 	camera_2d.shake(shake_amount)
-	collision_shape_2d.disabled
 	animated_sprite_2d.speed_scale = Engine.time_scale * animated_sprite_2d.speed_scale  
 	animated_sprite_2d.play("Death")
 
@@ -67,23 +67,27 @@ func  _physics_process(delta: float) -> void:
 		velocity.x = lerp(velocity.x,0.0,friction*delta)
 	
 	motion_previous = motion
+	resize(delta)
+	move_and_slide()
 
-	
+
+func resize(delta):
 	if not is_on_floor():
 		hit_the_ground = false
-		$AnimatedSprite2D.scale.y = remap(abs(motion.y), 0, abs(jump_velocity * gravity), 0.97, 1.03)
-		$AnimatedSprite2D.scale.x = remap(abs(motion.y), 0, abs(jump_velocity * gravity), 1.05, 0.95)
-	
-	
-	if not hit_the_ground and is_on_floor():
-
+		$AnimatedSprite2D.scale.y = remap(abs(motion.y), 0.0, abs(jump_velocity * gravity), 0.97, 1.03)
+		$AnimatedSprite2D.scale.x = remap(abs(motion.y), 0.0, abs(jump_velocity * gravity), 1.05, 0.95)
+		
+	elif not hit_the_ground:
 		hit_the_ground = true
-		$AnimatedSprite2D.scale.x = remap(abs(motion_previous.y), 0, abs(1700), 1.1, 1.2)
-		$AnimatedSprite2D.scale.y = remap(abs(motion_previous.y), 0, abs(1700), 0.8, 0.5)
-	$AnimatedSprite2D.scale.x = lerp($AnimatedSprite2D.scale.x, 1.0, 1 - pow(0.01, delta))
-	$AnimatedSprite2D.scale.y = lerp($AnimatedSprite2D.scale.y, 1.0, 1 - pow(0.01, delta))
-	
-	move_and_slide()
+		$AnimatedSprite2D.scale.x = remap(abs(motion_previous.y), 0.0, 1700.0, 1.1, 1.2)
+		$AnimatedSprite2D.scale.y = remap(abs(motion_previous.y), 0.0, 1700.0, 0.8, 0.5)
+
+	$AnimatedSprite2D.scale.x = lerp($AnimatedSprite2D.scale.x, 1.0, 1.0 - pow(0.01, delta))
+	$AnimatedSprite2D.scale.y = lerp($AnimatedSprite2D.scale.y, 1.0, 1.0 - pow(0.01, delta))
+
+	$AnimatedSprite2D.scale.x = clamp($AnimatedSprite2D.scale.x, 0.75, 1.25)
+	$AnimatedSprite2D.scale.y = clamp($AnimatedSprite2D.scale.y, 0.75, 1.25)
+
 
 func animate():
 	var walking : bool
@@ -91,8 +95,12 @@ func animate():
 	if is_on_floor() == false :
 		if velocity.x > 0 :
 			animated_sprite_2d.flip_h = false
+			light_occluder_2d.scale.x = 1
+			gpu_particles_2d.scale.x = 1
 		if velocity.x < 0 :
 			animated_sprite_2d.flip_h = true
+			light_occluder_2d.scale.x = -1
+			gpu_particles_2d.scale.x = -1
 	
 	await animated_sprite_2d.animation_finished
 	

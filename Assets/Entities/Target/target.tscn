@@ -1,13 +1,65 @@
 [gd_scene format=3 uid="uid://1agrttq1rbs3"]
 
-[ext_resource type="Texture2D" uid="uid://c2oihgex0vb7u" path="res://extra/Templates/16.png" id="1_uc4jj"]
+[ext_resource type="Texture2D" uid="uid://dji14ispg3co8" path="res://Assets/Entities/Target/Sprite-0001.png" id="1_7qsbq"]
 [ext_resource type="PackedScene" uid="uid://dqyoa5yphc7c" path="res://Assets/Entities/kill area/kill_area.tscn" id="2_uggih"]
+[ext_resource type="Texture2D" uid="uid://dkx4xb0fmfj6x" path="res://Assets/Sprites/Glow.png" id="3_7qsbq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uggih"]
 size = Vector2(16, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qsbq"]
 size = Vector2(20, 28)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7qsbq"]
+polygon = PackedVector2Array(-10, -14, 10, -14, 10, 14, -10, 14)
+
+[sub_resource type="Curve" id="Curve_7qsbq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.6136364, 0.7808989), -1.2238967, -1.2238967, 0, 0, Vector2(0.97727275, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_yter4"]
+curve = SubResource("Curve_7qsbq")
+
+[sub_resource type="Curve" id="Curve_sioxd"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1.7022474), 0.0, 0.0, 0, 0, Vector2(1, 0.79213476), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_u3hw3"]
+curve = SubResource("Curve_sioxd")
+
+[sub_resource type="CurveTexture" id="CurveTexture_x13w3"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w3gw3"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 17.27
+emission_ring_inner_radius = 17.08
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0, 0)
+angular_velocity_min = -180.00002
+angular_velocity_max = 179.99998
+orbit_velocity_min = -0.049999908
+orbit_velocity_max = 0.050000098
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 4.9999976
+radial_accel_max = 14.999997
+tangential_accel_min = -5.000002
+tangential_accel_max = 4.9999976
+tangential_accel_curve = SubResource("CurveTexture_x13w3")
+damping_min = 1.0
+damping_max = 3.0000002
+scale_min = 0.0
+scale_max = 2.0
+scale_over_velocity_curve = SubResource("CurveTexture_u3hw3")
+alpha_curve = SubResource("CurveTexture_yter4")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.19999997
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
 
 [node name="RigidBody2D" type="RigidBody2D" unique_id=557572111 groups=["target"]]
 collision_layer = 3
@@ -22,9 +74,9 @@ position = Vector2(32, -4)
 shape = SubResource("RectangleShape2D_uggih")
 
 [node name="Target" type="Sprite2D" parent="." unique_id=777876796 groups=["target"]]
-self_modulate = Color(0.9, 1, 0, 1)
-scale = Vector2(0.99999994, 1.5)
-texture = ExtResource("1_uc4jj")
+position = Vector2(0, -7.1525574e-07)
+scale = Vector2(0.99999994, 1)
+texture = ExtResource("1_7qsbq")
 
 [node name="Kill area" parent="." unique_id=439772012 instance=ExtResource("2_uggih")]
 
@@ -34,3 +86,18 @@ debug_color = Color(1, 0.46733332, 0.060000002, 0.41960785)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=124275859 groups=["target"]]
 shape = SubResource("RectangleShape2D_uggih")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=615024341]
+occluder = SubResource("OccluderPolygon2D_7qsbq")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1251597631]
+scale = Vector2(0.43750003, 0.43749997)
+color = Color(0.3339599, 0.69, 0.09659999, 1)
+texture = ExtResource("3_7qsbq")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=524172115]
+self_modulate = Color(0.9019608, 1, 0, 1)
+amount = 32
+lifetime = 2.0
+explosiveness = 0.2
+process_material = SubResource("ParticleProcessMaterial_w3gw3")

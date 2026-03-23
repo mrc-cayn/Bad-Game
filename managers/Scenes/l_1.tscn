@@ -56,10 +56,11 @@ target_height = 128.0
 time = 3.0
 
 [node name="CheckButton" parent="Wall" unique_id=2065476940 instance=ExtResource("6_u1f04")]
-offset_left = 95.99999
-offset_top = 55.999996
-offset_right = 140.0
-offset_bottom = 80.0
+offset_left = 48.000004
+offset_top = 144.00002
+offset_right = 92.000015
+offset_bottom = 168.00002
+rotation = -1.5707964
 scale = Vector2(2.5, 2.5)
 action_mode = 0
 metadata/_edit_use_anchors_ = true

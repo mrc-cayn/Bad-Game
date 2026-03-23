@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cuif2fi3s56cq"]
 
-[ext_resource type="Texture2D" uid="uid://dvkl1lbucwblx" path="res://extra/Templates/32.png" id="1_l8h54"]
+[ext_resource type="Texture2D" uid="uid://ce8bbtkhiqrx6" path="res://Assets/Entities/Cat/Sprite-0002.png" id="1_0yqqc"]
+[ext_resource type="Texture2D" uid="uid://dkx4xb0fmfj6x" path="res://Assets/Sprites/Glow.png" id="2_urkqf"]
 
 [sub_resource type="GDScript" id="GDScript_0xm2m"]
 script/source = "extends CharacterBody2D
@@ -10,6 +11,7 @@ class_name PlatformerController2D
 signal jumped(is_ground_jump: bool)
 signal hit_ground()
 
+var orignal_pos : Vector2
 
 # Set these to the name of your action (in the Input Map)
 ## Name of input action to move left.
@@ -88,6 +90,7 @@ var _jump_duration: float = DEFAULT_JUMP_DURATION
 ## Pressing jump this many seconds before hitting the ground will still make you jump.
 ## Only neccessary when can_hold_jump is unchecked.
 @export var jump_buffer : float = 0.1
+@onready var camera_2d: Camera2D = $\"../AnimationPlayer2/Camera2D\"
 
 
 # These will be calcualted automatically
@@ -117,6 +120,13 @@ var acc = Vector2()
 @onready var coyote_timer = Timer.new()
 @onready var jump_buffer_timer = Timer.new()
 
+func repos():
+	if G.moving == true :
+		orignal_pos = $\"../AnimationPlayer2/Camera2D\".position
+		position = orignal_pos
+	else:
+		position = orignal_pos
+
 
 func _init():
 	default_gravity = calculate_gravity(max_jump_height, jump_duration)
@@ -127,6 +137,8 @@ func _init():
 
 
 func _ready():
+	orignal_pos = position
+	
 	if is_coyote_time_enabled:
 		add_child(coyote_timer)
 		coyote_timer.wait_time = coyote_time
@@ -157,6 +169,11 @@ func _input(_event):
 
 
 func _physics_process(delta):
+	
+	if Input.is_action_just_pressed(\"R\"):
+		repos()
+	if G.moving == true :
+		orignal_pos = camera_2d.global_position
 	if is_coyote_timer_running() or (is_feet_on_ground() and current_jump_type == JumpType.NONE):
 		jumps_left = max_jump_amount
 	if is_feet_on_ground() and current_jump_type == JumpType.NONE:
@@ -328,33 +345,93 @@ func calculate_speed(p_max_speed, p_friction):
 	return (p_max_speed / p_friction) - p_max_speed
 "
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_urkqf"]
+size = Vector2(32, 32)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_1bvp3"]
 radius = 16.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1053366969 groups=["player"]]
-modulate = Color(0.23031491, 0.23031494, 0.23031494, 1)
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_urkqf"]
+polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="Curve" id="Curve_urkqf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fj8al"]
+curve = SubResource("Curve_urkqf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_urkqf"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 34.75
+emission_ring_inner_radius = 12.0
+emission_ring_cone_angle = 90.0
+angle_min = -360.0
+angle_max = 360.00003
+orbit_velocity_min = -0.49999994
+orbit_velocity_max = 0.5000001
+radial_velocity_min = 9.999977
+radial_velocity_max = 9.999977
+gravity = Vector3(0, 10, 0)
+radial_accel_min = -8.000002
+radial_accel_max = 11.999997
+scale_min = 0.0
+scale_max = 8.0
+scale_curve = SubResource("CurveTexture_fj8al")
+hue_variation_min = -0.100000024
+hue_variation_max = 0.09999997
+
+[node name="Player" type="CharacterBody2D" unique_id=1053366969 groups=["immortal", "player"]]
 collision_layer = 2
 collision_mask = 3
+slide_on_ceiling = false
 script = SubResource("GDScript_0xm2m")
 max_jump_height = 160.0
 min_jump_height = 50.0
 double_jump_height = 0.0
 jump_duration = 0.5
 falling_gravity_multiplier = 1.2
+max_jump_amount = 999
 max_acceleration = 1600
-friction = 4
-coyote_time = 0.2
-jump_buffer = 0.2
+friction = 6
+can_hold_jump = true
+jump_buffer = 0.0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1861935175 groups=["player"]]
 z_index = 1
-shape = SubResource("CircleShape2D_1bvp3")
+shape = SubResource("RectangleShape2D_urkqf")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1090670902 groups=["player"]]
-texture = ExtResource("1_l8h54")
+texture = ExtResource("1_0yqqc")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=822064906 groups=["player"]]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1604398851 groups=["player"]]
 z_index = 1
 shape = SubResource("CircleShape2D_1bvp3")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1475635210]
+scale = Vector2(0.43750003, 0.43750003)
+blend_mode = 1
+texture = ExtResource("2_urkqf")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=807719291]
+occluder = SubResource("OccluderPolygon2D_urkqf")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=690134967]
+modulate = Color(0.5, 0.5, 0.5, 1)
+amount = 48
+lifetime = 1.5
+explosiveness = 0.4
+randomness = 0.5
+fixed_fps = 64
+interpolate = false
+local_coords = true
+trail_enabled = true
+trail_lifetime = 0.1
+trail_sections = 4
+trail_section_subdivisions = 2
+process_material = SubResource("ParticleProcessMaterial_urkqf")
