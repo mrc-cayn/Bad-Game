@@ -57,21 +57,6 @@ offset_right = 292.0
 offset_bottom = 72.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Wall4" parent="." unique_id=552325897 instance=ExtResource("5_okjg2")]
-position = Vector2(208, -152)
-target_height = 48.0
-time = 0.2
-
-[node name="CheckButton2" parent="Wall4" unique_id=1620363867 instance=ExtResource("6_hc2rk")]
-z_index = 1
-offset_left = 176.0
-offset_top = -136.00002
-offset_right = 220.0
-offset_bottom = -112.000015
-rotation = -1.5707964
-scale = Vector2(1.2, 1.2)
-metadata/_edit_use_anchors_ = true
-
 [node name="Wall2" parent="." unique_id=1664589563 instance=ExtResource("5_okjg2")]
 position = Vector2(-312, 88)
 rotation = -4.712389
