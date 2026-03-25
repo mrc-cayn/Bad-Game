@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ctkkx724gkoga"]
 
 [ext_resource type="Script" uid="uid://7e8s4sx6nj3l" path="res://globals/global.gd" id="1_mqaw6"]
+[ext_resource type="Material" uid="uid://wfu3qmlx5ct7" path="res://Assets/new_shader_material.tres" id="2_lyb5f"]
 
 [node name="Global" type="Node" unique_id=1263526524]
 script = ExtResource("1_mqaw6")
