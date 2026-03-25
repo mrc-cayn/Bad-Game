@@ -6,3 +6,15 @@
 script = ExtResource("1_mqaw6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=776925005]
+<<<<<<< Updated upstream
+=======
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=502830840]
+visible = false
+material = ExtResource("2_lyb5f")
+offset_left = -336.0
+offset_top = -72.0
+offset_right = -80.0
+offset_bottom = 152.0
+rotation = -0.7853982
+>>>>>>> Stashed changes

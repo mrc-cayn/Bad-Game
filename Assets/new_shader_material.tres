@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://wfu3qmlx5ct7"]
+
+[ext_resource type="Shader" uid="uid://cffknj31wnlfc" path="res://globals/outline.gdshader" id="1_fe1yi"]
+
+[resource]
+shader = ExtResource("1_fe1yi")
+shader_parameter/outline_cotor = Color(0, 0, 0, 0.1)
+shader_parameter/corner_pixet = false

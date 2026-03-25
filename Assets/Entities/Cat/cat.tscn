@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cjxvyltk8os3f" path="res://Assets/Entities/Cat/cat.gd" id="1_gd3th"]
 [ext_resource type="Texture2D" uid="uid://byddfisrlkeqe" path="res://Assets/Entities/Cat/Animations/Idle.tres" id="2_b5tg2"]
+[ext_resource type="Material" uid="uid://wfu3qmlx5ct7" path="res://Assets/new_shader_material.tres" id="2_h57f5"]
 [ext_resource type="Texture2D" uid="uid://c8yw5si8lfutd" path="res://Assets/Entities/Cat/Cat-Deathpng.png" id="2_jolvo"]
 [ext_resource type="Texture2D" uid="uid://dakv47kgkaku8" path="res://Assets/Entities/Cat/Animations/Walk.tres" id="3_gd3th"]
 [ext_resource type="Texture2D" uid="uid://c3br1mdbw61ha" path="res://Assets/Entities/Cat/Cadt.png" id="3_jolvo"]
@@ -355,12 +356,11 @@ position = Vector2(2, 6)
 shape = SubResource("CircleShape2D_gd3th")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=973035221]
+material = ExtResource("2_h57f5")
 position = Vector2(0, 16)
 sprite_frames = SubResource("SpriteFrames_g3sy6")
-animation = &"Death"
+animation = &"Idle"
 autoplay = "Idle"
-frame = 11
-frame_progress = 0.52792
 offset = Vector2(0, -16)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1400037554]
@@ -387,6 +387,7 @@ script = ExtResource("6_ocmoh")
 [node name="Timer" type="Timer" parent="Camera2D" unique_id=674585263]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1760634321]
+visible = false
 occluder = SubResource("OccluderPolygon2D_gd3th")
 occluder_light_mask = 15
 
