@@ -4,25 +4,28 @@
 [ext_resource type="PackedScene" uid="uid://dqyoa5yphc7c" path="res://Assets/Entities/kill area/kill_area.tscn" id="2_x18xe"]
 [ext_resource type="Texture2D" uid="uid://cl3xh5i4ckbs3" path="res://extra/Sprite-0001.png" id="3_x18xe"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hmaon"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_x18xe"]
 atlas = ExtResource("1_x18xe")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_itjpf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmaon"]
 atlas = ExtResource("1_x18xe")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5r7gw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_itjpf"]
 atlas = ExtResource("1_x18xe")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xl0ul"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5r7gw"]
 atlas = ExtResource("1_x18xe")
 region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_hmaon"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_xl0ul"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x18xe")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hmaon")
 }, {
@@ -31,17 +34,14 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5r7gw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xl0ul")
 }],
 "loop": true,
 "name": &"default",
-"speed": 12.0
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_itjpf"]
-size = Vector2(32, 32)
+size = Vector2(32, 25.6)
 
 [sub_resource type="Curve" id="Curve_x18xe"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5681818, 0.64606744), -1.1979254, -1.1979254, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -84,27 +84,30 @@ collision_mode = 1
 collision_friction = 0.0
 collision_bounce = 0.8
 
-[node name="poiaon" type="AnimatedSprite2D" unique_id=1683793060]
-self_modulate = Color(0.8, 0.8, 0.8, 1)
+[node name="poiaon" type="AnimatedSprite2D" unique_id=769875503]
+self_modulate = Color(0.5248, 0.8, 0.456, 1)
 z_index = 1
-sprite_frames = SubResource("SpriteFrames_hmaon")
+texture_repeat = 2
+position = Vector2(0, 4)
+scale = Vector2(1, 1.25)
+sprite_frames = SubResource("SpriteFrames_xl0ul")
 autoplay = "default"
-frame = 1
-frame_progress = 0.7147443
 
 [node name="Kill area" parent="." unique_id=439772012 instance=ExtResource("2_x18xe")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Kill area" unique_id=1743292615]
+position = Vector2(0, -3.1999998)
 shape = SubResource("RectangleShape2D_itjpf")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1175526872]
 self_modulate = Color(0.49108335, 0.83, 0.415, 1)
-position = Vector2(0, -28)
+position = Vector2(0, -26.4)
 scale = Vector2(1, 1.5)
 shadow_enabled = true
 texture = ExtResource("3_x18xe")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=470779720]
+visible = false
 position = Vector2(0, -16)
 amount = 16
 speed_scale = 0.5

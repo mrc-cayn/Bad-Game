@@ -7,10 +7,10 @@ var moving := false
 var current_scene
 
 func _ready() -> void:
-	current_scene = get_tree().current_scene.scene_file_pathCurrent_level
+	current_scene = get_tree().current_scene.scene_file_path
 
 func  _process(delta: float) -> void:
-	if current_scene == "res://managers/Scenes/l_11.tscn" :
+	if current_scene == "res://managers/Scenes/l_12.tscn" :
 		moving = true
 		
 	if death == true:

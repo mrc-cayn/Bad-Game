@@ -382,6 +382,7 @@ top_level = true
 z_index = 1
 position = Vector2(0, -68)
 limit_enabled = false
+position_smoothing_enabled = true
 script = ExtResource("6_ocmoh")
 
 [node name="Timer" type="Timer" parent="Camera2D" unique_id=674585263]

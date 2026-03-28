@@ -2,10 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://dji14ispg3co8" path="res://Assets/Entities/Target/Sprite-0001.png" id="1_7qsbq"]
 [ext_resource type="PackedScene" uid="uid://dqyoa5yphc7c" path="res://Assets/Entities/kill area/kill_area.tscn" id="2_uggih"]
+[ext_resource type="Texture2D" uid="uid://dno72cke578hv" path="res://Assets/Entities/Target/Sprite-0001-export.png" id="2_yter4"]
 [ext_resource type="Texture2D" uid="uid://dkx4xb0fmfj6x" path="res://Assets/Sprites/Glow.png" id="3_7qsbq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uggih"]
 size = Vector2(16, 24)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7qsbq"]
+diffuse_texture = ExtResource("1_7qsbq")
+normal_texture = ExtResource("2_yter4")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qsbq"]
 size = Vector2(20, 28)
@@ -28,7 +33,13 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_u3hw3"]
 curve = SubResource("Curve_sioxd")
 
+[sub_resource type="Curve" id="Curve_yter4"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="CurveTexture" id="CurveTexture_x13w3"]
+curve = SubResource("Curve_yter4")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w3gw3"]
 particle_flag_disable_z = true
@@ -62,8 +73,8 @@ collision_friction = 0.0
 collision_bounce = 0.0
 
 [node name="RigidBody2D" type="RigidBody2D" unique_id=557572111 groups=["target"]]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 7
+collision_mask = 7
 mass = 0.1
 
 [node name="target" type="Area2D" parent="." unique_id=1132278741 groups=["target"]]
@@ -76,7 +87,7 @@ shape = SubResource("RectangleShape2D_uggih")
 [node name="Target" type="Sprite2D" parent="." unique_id=777876796 groups=["target"]]
 position = Vector2(0, -7.1525574e-07)
 scale = Vector2(0.99999994, 1)
-texture = ExtResource("1_7qsbq")
+texture = SubResource("CanvasTexture_7qsbq")
 
 [node name="Kill area" parent="." unique_id=439772012 instance=ExtResource("2_uggih")]
 

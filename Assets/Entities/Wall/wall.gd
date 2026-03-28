@@ -1,6 +1,8 @@
 extends StaticBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var line: Sprite2D = $Line
+@onready var line_scale = line.scale
 
 @export var target_height : float
 @export var tile_size : int = 32
@@ -16,6 +18,11 @@ func  _ready() -> void:
 	orignal_scale = scale
 	if auto_active == true:
 		activate()
+	line.position = Vector2(line.position.y,target_height) * Vector2.from_angle(rotation)
+
+func _process(delta: float) -> void:
+	line.scale.y *= 1/scale.y
+	print_debug(line_scale)
 
 func activate():
 	#print(animation_player.get_animation("activate").track_get_key_value(0,1))

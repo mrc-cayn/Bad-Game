@@ -6,7 +6,7 @@ extends AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if G.Current_level >= 6 :
+	if G.Current_level >= 6 and G.Current_level != 12:
 		sprite_2d.self_modulate = Color("858b8d")
 		sprite_2d_2.self_modulate = Color("518183")
 		sprite_2d_3.self_modulate = Color("3f4347")

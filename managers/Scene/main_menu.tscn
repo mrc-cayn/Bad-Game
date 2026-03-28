@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://byydnxt2po44k"]
+
+[ext_resource type="Script" uid="uid://bpra653nea4pe" path="res://managers/Scene/main_menu.gd" id="1_h3xfm"]
+[ext_resource type="Theme" uid="uid://ctstjshwmp4m4" path="res://Assets/default.tres" id="1_w5a5w"]
+[ext_resource type="Script" uid="uid://cmgo3w8b80xc8" path="res://template_button.gd" id="3_h3xfm"]
+
+[node name="Main_menu" type="Node2D" unique_id=876926868]
+script = ExtResource("1_h3xfm")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=959645013]
+top_level = true
+z_index = 1
+position = Vector2(256, 184)
+limit_enabled = false
+position_smoothing_enabled = true
+
+[node name="PopupMenu" type="PopupMenu" parent="." unique_id=1369079456]
+oversampling_override = 1.0
+position = Vector2i(64, 64)
+size = Vector2i(512, 360)
+visible = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PopupMenu" unique_id=1630324375]
+offset_left = 16.0
+offset_top = 7.9999986
+offset_right = 7855.999
+offset_bottom = 6967.999
+scale = Vector2(0.05, 0.05)
+theme = ExtResource("1_w5a5w")
+theme_override_font_sizes/normal_font_size = 512
+text = "Guide the cat using the cusor
+
+The closer the curser faster the cat ----------------------->
+
+click buttons and leavers to progress
+
+you can drag the mouse of the button if you keep holding left click.
+   :3"
+scroll_following = true
+scroll_following_visible_characters = true
+
+[node name="Button" type="Button" parent="PopupMenu" unique_id=73374366]
+offset_left = 568.0
+offset_top = 56.000004
+offset_right = 1640.0249
+offset_bottom = 694.0
+rotation = 3.1415927
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("1_w5a5w")
+text = "X"
+
+[node name="Button" type="Button" parent="." unique_id=1280629004]
+offset_top = 88.0
+offset_right = 2399.9998
+offset_bottom = 967.9999
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("1_w5a5w")
+text = "Play"
+script = ExtResource("3_h3xfm")
+
+[node name="Button2" type="Button" parent="." unique_id=1608329193]
+offset_top = 231.99998
+offset_right = 3279.9998
+offset_bottom = 1111.9999
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("1_w5a5w")
+text = "How to play"
+
+[connection signal="button_up" from="PopupMenu/Button" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="Button2" to="." method="_on_button_2_button_up"]

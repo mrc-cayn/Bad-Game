@@ -98,18 +98,6 @@ rotation = -1.5707964
 dir = Vector2(-1, -0.1)
 velocity = 1500
 
-[node name="Launcher5" parent="." unique_id=2113976444 instance=ExtResource("8_wfwxn")]
-position = Vector2(312, -8)
-rotation = -1.5707964
-dir = Vector2(-1, -0.1)
-velocity = 1500
-
-[node name="Launcher6" parent="." unique_id=42188528 instance=ExtResource("8_wfwxn")]
-position = Vector2(312, 24)
-rotation = -1.5707964
-dir = Vector2(-1, -0.1)
-velocity = 1500
-
 [node name="Launcher2" parent="." unique_id=311265114 instance=ExtResource("8_wfwxn")]
 position = Vector2(-288, 136)
 velocity = 1800
