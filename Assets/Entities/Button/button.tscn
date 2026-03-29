@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b06x7gnhix5te" path="res://Assets/Entities/Button/button.gd" id="1_k38lq"]
 [ext_resource type="Texture2D" uid="uid://ruj62wnjfbgp" path="res://Assets/Entities/Button/Sprite-0001-Sheet.png" id="2_x1m7j"]
 [ext_resource type="Texture2D" uid="uid://dkx4xb0fmfj6x" path="res://Assets/Sprites/Glow.png" id="3_jn282"]
+[ext_resource type="AudioStream" uid="uid://b0thp00vcitbv" path="res://Assets/Audio/SFX/Click/Thunk_reverb.wav" id="4_d0tri"]
 
 [sub_resource type="Shader" id="Shader_jn282"]
 code = "shader_type canvas_item;
@@ -105,6 +106,8 @@ color = Color(0.5, 0.5, 0.5, 1)
 texture = ExtResource("3_jn282")
 
 [node name="Click" type="AudioStreamPlayer2D" parent="." unique_id=1209469411]
+stream = ExtResource("4_d0tri")
+bus = &"SFX"
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
 [connection signal="button_up" from="." to="." method="_on_button_up"]

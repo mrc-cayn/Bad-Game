@@ -4,6 +4,7 @@ var power:bool = false
 @export var state:int = -1
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @export var point_light_2d: PointLight2D 
+@onready var click: AudioStreamPlayer2D = $Click
 
 
 func _ready() -> void:
@@ -22,6 +23,8 @@ func _on_toggled(toggled_on: bool) -> void:
 		get_parent().deactivate()
 		animated_sprite_2d.play('off_to_on')
 		power = false
+	click.pitch_scale = audio.pitch_shift()
+	click.play()
 	pass # Replace with function body
 
 func _physics_process(delta: float) -> void:

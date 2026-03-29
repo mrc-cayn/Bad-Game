@@ -10,13 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://ckiph51dd28kp" path="res://Assets/Sprite-0001.png" id="8_mcyku"]
 [ext_resource type="Texture2D" uid="uid://doi61pocp5hh5" path="res://Assets/Sprites/tile_0136.png" id="9_4t8ef"]
 [ext_resource type="Texture2D" uid="uid://bwnff0oa6v47v" path="res://Assets/Entities/Cat/Cat1.png" id="10_p65c5"]
-[ext_resource type="Texture2D" uid="uid://d26trlxsum008" path="res://Assets/Entities/Cat/Cat_normal1.png" id="11_pwoow"]
-[ext_resource type="Texture2D" uid="uid://c87l3uclqsqci" path="res://Assets/Entities/Cat/Cat_normal2.png" id="12_8njcg"]
-[ext_resource type="Texture2D" uid="uid://cf8dsy08sdkm2" path="res://Assets/Entities/Cat/Cat_normal3.png" id="13_428ql"]
-[ext_resource type="Texture2D" uid="uid://cx8xlpfvysptl" path="res://Assets/Entities/Cat/Cat_normal4.png" id="14_tt55e"]
-[ext_resource type="Texture2D" uid="uid://cxticn7gs553f" path="res://Assets/Entities/Cat/Cat_normal6.png" id="15_xhdmq"]
-[ext_resource type="Texture2D" uid="uid://djcdcctnj0wq3" path="res://Assets/Entities/Cat/Cat_normal7.png" id="16_br8tj"]
 [ext_resource type="PackedScene" uid="uid://caqbrx0o1oqcn" path="res://Assets/Entities/Button/button.tscn" id="17_8njcg"]
+[ext_resource type="Texture2D" uid="uid://c2ta5nfdmtn3n" path="res://Assets/Entities/Cat/Cat_normal-S7.png" id="18_428ql"]
 [ext_resource type="Texture2D" uid="uid://crqe3gclrp3fo" path="res://Assets/Entities/Conver/sdaaaaaa.png" id="18_tt55e"]
 [ext_resource type="PackedScene" uid="uid://bau25nc0g48y2" path="res://Assets/Entities/Conver/conver.tscn" id="19_br8tj"]
 [ext_resource type="PackedScene" uid="uid://b0k5pb36dhf7o" path="res://Assets/Entities/Conver/animated_sprite_2d.tscn" id="19_xhdmq"]
@@ -162,30 +157,6 @@ position = Vector2(607, 62.999985)
 rotation = -0.5235988
 scale = Vector2(-4, 4)
 texture = ExtResource("10_p65c5")
-
-[node name="CatNormal1" type="Sprite2D" parent="." unique_id=833971312]
-position = Vector2(8, 373)
-texture = ExtResource("11_pwoow")
-
-[node name="CatNormal2" type="Sprite2D" parent="." unique_id=1005946582]
-position = Vector2(55, 387)
-texture = ExtResource("12_8njcg")
-
-[node name="CatNormal3" type="Sprite2D" parent="." unique_id=1142788272]
-position = Vector2(93, 370)
-texture = ExtResource("13_428ql")
-
-[node name="CatNormal4" type="Sprite2D" parent="." unique_id=777878477]
-position = Vector2(142, 392)
-texture = ExtResource("14_tt55e")
-
-[node name="CatNormal6" type="Sprite2D" parent="." unique_id=1641202447]
-position = Vector2(179, 368)
-texture = ExtResource("15_xhdmq")
-
-[node name="CatNormal7" type="Sprite2D" parent="." unique_id=949869385]
-position = Vector2(222, 394)
-texture = ExtResource("16_br8tj")
 
 [node name="button" parent="." unique_id=19675738 instance=ExtResource("17_8njcg")]
 z_index = -2
@@ -1034,6 +1005,10 @@ collision_mask = 4
 position = Vector2(-138, -376)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_tmv3n")
+
+[node name="CatNormalS7" type="Sprite2D" parent="." unique_id=622711317]
+position = Vector2(160, 384)
+texture = ExtResource("18_428ql")
 
 [connection signal="button_up" from="PopupMenu/Button" to="." method="_on_button_button_up"]
 [connection signal="button_up" from="Button" to="Button" method="_on_button_up"]
