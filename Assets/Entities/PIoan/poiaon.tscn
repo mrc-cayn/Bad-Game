@@ -4,6 +4,40 @@
 [ext_resource type="PackedScene" uid="uid://dqyoa5yphc7c" path="res://Assets/Entities/kill area/kill_area.tscn" id="2_x18xe"]
 [ext_resource type="Texture2D" uid="uid://cl3xh5i4ckbs3" path="res://extra/Sprite-0001.png" id="3_x18xe"]
 
+[sub_resource type="Shader" id="Shader_x18xe"]
+code = "shader_type canvas_item;
+uniform vec4 outline_color : source_color = vec4(0.0,0.0,0.0,0.1);
+uniform bool corner_pixel = false ;
+
+void fragment() {
+	vec4 base = texture(TEXTURE,UV);
+	if (base.a > 0.0) {
+		COLOR = base ;
+	}
+	
+	else {
+		vec2 image_pixel_size = TEXTURE_PIXEL_SIZE;
+		bool valid_side =
+			texture(TEXTURE,UV + vec2(-image_pixel_size.x,0)).a > 0.0  ||
+			texture(TEXTURE,UV + vec2(image_pixel_size.x,0)).a > 0.0 ||
+			texture(TEXTURE,UV + vec2(0,-image_pixel_size.y)).a > 0.0 ||
+			texture(TEXTURE,UV + vec2(0,image_pixel_size.y)).a > 0.0;
+		bool valid_corner =
+			texture (TEXTURE ,UV + vec2(-image_pixel_size.x,-image_pixel_size.y)).a > 0.0 ||
+			texture (TEXTURE ,UV + vec2(image_pixel_size.x,-image_pixel_size.y)).a > 0.0 ||
+			texture (TEXTURE ,UV + vec2(-image_pixel_size.x,image_pixel_size.y)).a > 0.0 ||
+			texture (TEXTURE ,UV + vec2(image_pixel_size.x,image_pixel_size.y)).a > 0.0 ;
+				
+		if (valid_side || (corner_pixel && valid_corner))
+			COLOR = outline_color;
+				}
+			}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hmaon"]
+shader = SubResource("Shader_x18xe")
+shader_parameter/outline_color = Color(0.25093332, 0.8, 0.23200002, 0.70980394)
+shader_parameter/corner_pixel = false
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_x18xe"]
 atlas = ExtResource("1_x18xe")
 region = Rect2(0, 0, 32, 32)
@@ -88,6 +122,7 @@ collision_bounce = 0.8
 self_modulate = Color(0.5248, 0.8, 0.456, 1)
 z_index = 1
 texture_repeat = 2
+material = SubResource("ShaderMaterial_hmaon")
 position = Vector2(0, 4)
 scale = Vector2(1, 1.25)
 sprite_frames = SubResource("SpriteFrames_xl0ul")
@@ -96,12 +131,20 @@ autoplay = "default"
 [node name="Kill area" parent="." unique_id=439772012 instance=ExtResource("2_x18xe")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Kill area" unique_id=1743292615]
-position = Vector2(0, -3.1999998)
+position = Vector2(0, -3.2000003)
 shape = SubResource("RectangleShape2D_itjpf")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1175526872]
 self_modulate = Color(0.49108335, 0.83, 0.415, 1)
-position = Vector2(0, -26.4)
+position = Vector2(0, -28.8)
+scale = Vector2(1, 1.5)
+shadow_enabled = true
+texture = ExtResource("3_x18xe")
+
+[node name="PointLight2D2" type="PointLight2D" parent="." unique_id=1201699932]
+self_modulate = Color(0.49108335, 0.83, 0.415, 1)
+position = Vector2(2.2737368e-13, -3.2000008)
+rotation = -3.1415927
 scale = Vector2(1, 1.5)
 shadow_enabled = true
 texture = ExtResource("3_x18xe")

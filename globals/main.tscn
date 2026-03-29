@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://cq060j3i3nywb" path="res://extra/Background.png" id="11_j1tka"]
 [ext_resource type="Texture2D" uid="uid://c8wml5k8apt8q" path="res://extra/grid1.png" id="12_8ispi"]
 [ext_resource type="Texture2D" uid="uid://djse0tebdc6hi" path="res://extra/grid.png" id="13_42cnb"]
+[ext_resource type="Texture2D" uid="uid://ckiph51dd28kp" path="res://Assets/Sprite-0001.png" id="14_42cnb"]
+[ext_resource type="Texture2D" uid="uid://doxm308es3t3w" path="res://Assets/Sprites/tile_0028.png" id="14_liusx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ciwao"]
 texture = ExtResource("8_702u3")
@@ -354,10 +356,8 @@ layer_0/tile_data = PackedInt32Array(589822, 1, 0)
 modulate = Color(1, 1, 1, 0.39215687)
 z_index = -10
 material = SubResource("ShaderMaterial_8ispi")
-offset_left = -488.0
-offset_top = -440.0
-offset_right = 440.0
-offset_bottom = 488.0
+offset_right = 928.0
+offset_bottom = 928.0
 texture = ExtResource("11_j1tka")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect" unique_id=537914854]
@@ -385,3 +385,31 @@ texture = SubResource("AtlasTexture_42cnb")
 environment = SubResource("Environment_8ispi")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=481576004]
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=152965032]
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=468458144]
+z_index = 1
+position = Vector2(-104, 88)
+texture = ExtResource("14_liusx")
+
+[node name="Sprite0001" type="Sprite2D" parent="." unique_id=1336871638]
+modulate = Color(1, 0.848, 0.62, 1)
+self_modulate = Color(1, 1, 1, 0.19607843)
+position = Vector2(-104, 88)
+scale = Vector2(8, 8)
+texture = ExtResource("14_42cnb")
+
+[node name="Sprite0002" type="Sprite2D" parent="." unique_id=541825393]
+modulate = Color(0.883665, 0.91075, 0.4225359, 1)
+self_modulate = Color(1, 1, 1, 0.19607843)
+position = Vector2(-104, 88)
+scale = Vector2(5.8600903, 5.8600903)
+texture = ExtResource("14_42cnb")
+
+[node name="Sprite0003" type="Sprite2D" parent="." unique_id=1395446429]
+modulate = Color(0.91, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0.19607843)
+position = Vector2(-104, 87.99999)
+scale = Vector2(2.94838, 2.94838)
+texture = ExtResource("14_42cnb")

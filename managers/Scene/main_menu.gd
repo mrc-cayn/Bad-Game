@@ -3,6 +3,7 @@ extends Node2D
 @onready var popup_menu: PopupMenu = $PopupMenu
 @onready var button: Button = $Button
 
+
 func _on_button_button_up() -> void:
 	popup_menu.visible = false
 	

@@ -19,15 +19,20 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Bad Game"
-run/main_scene="uid://cspyvje8po63w"
+run/main_scene="uid://byydnxt2po44k"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://yfvah2vys70e"
 
 [autoload]
 
 G="*res://globals/global.gd"
-Global="*res://globals/global.tscn"
-CS="*res://managers/Scene/change_scene.gd"
+CS="*uid://bkix2rmktgg24"
+audio="*uid://eujlfjo6ew11"
+Global="*uid://2o26e15xbrfy"
 
 [debug]
 
@@ -42,6 +47,7 @@ window/size/viewport_height=480
 window/size/mode=2
 window/size/resizable=false
 window/stretch/mode="viewport"
+mouse_cursor/custom_image="uid://doi61pocp5hh5"
 
 [editor_plugins]
 
@@ -52,6 +58,7 @@ enabled=PackedStringArray("res://addons/animated shape/addons/goutte.animated_sh
 player=""
 target=""
 immortal=""
+conver=""
 
 [input]
 

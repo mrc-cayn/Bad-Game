@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://bau25nc0g48y2" path="res://Assets/Entities/Conver/conver.tscn" id="13_shiwr"]
 [ext_resource type="TileSet" uid="uid://dm55ioqe4312x" path="res://Assets/Sprites/Lighting.tres" id="14_160hi"]
 [ext_resource type="Texture2D" uid="uid://dkx4xb0fmfj6x" path="res://Assets/Sprites/Glow.png" id="15_3ee02"]
+[ext_resource type="PackedScene" uid="uid://b0k5pb36dhf7o" path="res://Assets/Entities/Conver/animated_sprite_2d.tscn" id="16_3ee02"]
+[ext_resource type="Theme" uid="uid://ctstjshwmp4m4" path="res://Assets/default.tres" id="17_jfpfo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_41k3d"]
 texture = ExtResource("9_e1o8x")
@@ -73,16 +75,6 @@ rotation = 3.1415927
 position = Vector2(232, 140.5)
 scale = Vector2(5, 1.71875)
 
-[node name="Conver" parent="." unique_id=651640355 instance=ExtResource("13_shiwr")]
-position = Vector2(-96, 96)
-scale = Vector2(30.9, 2.1000001)
-dir = Vector2(1, 0)
-
-[node name="Conver2" parent="." unique_id=1082908508 instance=ExtResource("13_shiwr")]
-position = Vector2(263.99997, -63.999985)
-scale = Vector2(30.9, 2.1000001)
-dir = Vector2(1, 0)
-
 [node name="AnimationPlayer" parent="." unique_id=1080574321 instance=ExtResource("12_1egiu")]
 
 [node name="TileMap2" type="TileMap" parent="." unique_id=526305076]
@@ -125,3 +117,142 @@ position = Vector2(-128, -312)
 scale = Vector2(0.5, 0.24999997)
 color = Color(1, 0.86050004, 0.06999999, 1)
 texture = ExtResource("15_3ee02")
+
+[node name="Conver" parent="." unique_id=651640355 instance=ExtResource("13_shiwr")]
+position = Vector2(-96.000015, 88)
+scale = Vector2(31, 2.093)
+force = 6
+dir = Vector2(1, 0)
+
+[node name="Conver2" parent="." unique_id=1283245239 instance=ExtResource("13_shiwr")]
+position = Vector2(272, -72)
+scale = Vector2(31, 2.093)
+force = 6
+dir = Vector2(1, 0)
+
+[node name="Concey" type="Node" parent="." unique_id=223984581]
+
+[node name="AnimatedSprite2D" parent="Concey" unique_id=1772252916 instance=ExtResource("16_3ee02")]
+position = Vector2(-296, 96)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D2" parent="Concey" unique_id=1281120815 instance=ExtResource("16_3ee02")]
+position = Vector2(-264, 95.99999)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D3" parent="Concey" unique_id=35117400 instance=ExtResource("16_3ee02")]
+position = Vector2(-232, 96)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D4" parent="Concey" unique_id=1626546277 instance=ExtResource("16_3ee02")]
+position = Vector2(-200, 96.25001)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D5" parent="Concey" unique_id=1386443093 instance=ExtResource("16_3ee02")]
+position = Vector2(-168, 96.25)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D6" parent="Concey" unique_id=974484175 instance=ExtResource("16_3ee02")]
+position = Vector2(-136, 96.25001)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D7" parent="Concey" unique_id=1968042371 instance=ExtResource("16_3ee02")]
+position = Vector2(-104, 96.25001)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D16" parent="Concey" unique_id=2108139275 instance=ExtResource("16_3ee02")]
+position = Vector2(40, -66.74999)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D17" parent="Concey" unique_id=111004178 instance=ExtResource("16_3ee02")]
+position = Vector2(72, -66.75)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D18" parent="Concey" unique_id=855305521 instance=ExtResource("16_3ee02")]
+position = Vector2(104, -66.74999)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D19" parent="Concey" unique_id=312731298 instance=ExtResource("16_3ee02")]
+position = Vector2(136, -66.499985)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D20" parent="Concey" unique_id=1451630019 instance=ExtResource("16_3ee02")]
+position = Vector2(168, -66.49999)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D21" parent="Concey" unique_id=953444678 instance=ExtResource("16_3ee02")]
+position = Vector2(200, -66.499985)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D22" parent="Concey" unique_id=1531350069 instance=ExtResource("16_3ee02")]
+position = Vector2(232, -66.499985)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D23" parent="Concey" unique_id=47647675 instance=ExtResource("16_3ee02")]
+position = Vector2(264, -66.74999)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D24" parent="Concey" unique_id=25371512 instance=ExtResource("16_3ee02")]
+position = Vector2(296, -66.75)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D25" parent="Concey" unique_id=468164335 instance=ExtResource("16_3ee02")]
+position = Vector2(328, -66.74999)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D26" parent="Concey" unique_id=535957010 instance=ExtResource("16_3ee02")]
+position = Vector2(360, -66.499985)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D27" parent="Concey" unique_id=1685281117 instance=ExtResource("16_3ee02")]
+position = Vector2(392, -66.49999)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D28" parent="Concey" unique_id=1417020965 instance=ExtResource("16_3ee02")]
+position = Vector2(424, -66.499985)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D29" parent="Concey" unique_id=650597219 instance=ExtResource("16_3ee02")]
+position = Vector2(456, -66.499985)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D13" parent="Concey" unique_id=1707449542 instance=ExtResource("16_3ee02")]
+position = Vector2(72, 96.25)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D14" parent="Concey" unique_id=753872593 instance=ExtResource("16_3ee02")]
+position = Vector2(104, 96.25001)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D15" parent="Concey" unique_id=1338131909 instance=ExtResource("16_3ee02")]
+position = Vector2(136, 96.25001)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D8" parent="Concey" unique_id=1024521399 instance=ExtResource("16_3ee02")]
+position = Vector2(-72, 96.25)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D9" parent="Concey" unique_id=1308012158 instance=ExtResource("16_3ee02")]
+position = Vector2(-40, 96.25001)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D10" parent="Concey" unique_id=1350303441 instance=ExtResource("16_3ee02")]
+position = Vector2(-8, 96.500015)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D11" parent="Concey" unique_id=974726440 instance=ExtResource("16_3ee02")]
+position = Vector2(24, 96.50001)
+scale = Vector2(2, 3.3125002)
+
+[node name="AnimatedSprite2D12" parent="Concey" unique_id=1825870043 instance=ExtResource("16_3ee02")]
+position = Vector2(56, 96.500015)
+scale = Vector2(2, 3.3125002)
+
+[node name="Label2" type="Label" parent="." unique_id=1636999141]
+offset_left = 23.99997
+offset_top = -232.0
+offset_right = 7780.0
+offset_bottom = 1031.0
+scale = Vector2(0.05, 0.05)
+theme = ExtResource("17_jfpfo")
+text = "Level 6"

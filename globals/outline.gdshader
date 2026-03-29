@@ -1,6 +1,6 @@
 shader_type canvas_item;
-uniform vec4 outline_cotor : source_color = vec4(0.0,0.0,0.0,0.1);
-uniform bool corner_pixet = false ;
+uniform vec4 outline_color : source_color = vec4(0.0,0.0,0.0,0.1);
+uniform bool corner_pixel = false ;
 
 void fragment() {
 	vec4 base = texture(TEXTURE,UV);
@@ -20,5 +20,8 @@ void fragment() {
 			texture (TEXTURE ,UV + vec2(image_pixel_size.x,-image_pixel_size.y)).a > 0.0 ||
 			texture (TEXTURE ,UV + vec2(-image_pixel_size.x,image_pixel_size.y)).a > 0.0 ||
 			texture (TEXTURE ,UV + vec2(image_pixel_size.x,image_pixel_size.y)).a > 0.0 ;
+				
+		if (valid_side || (corner_pixel && valid_corner))
+			COLOR = outline_color;
 				}
 			}

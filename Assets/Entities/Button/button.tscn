@@ -4,6 +4,40 @@
 [ext_resource type="Texture2D" uid="uid://ruj62wnjfbgp" path="res://Assets/Entities/Button/Sprite-0001-Sheet.png" id="2_x1m7j"]
 [ext_resource type="Texture2D" uid="uid://dkx4xb0fmfj6x" path="res://Assets/Sprites/Glow.png" id="3_jn282"]
 
+[sub_resource type="Shader" id="Shader_jn282"]
+code = "shader_type canvas_item;
+uniform vec4 outline_color : source_color = vec4(0.0,0.0,0.0,0.1);
+uniform bool corner_pixel = false ;
+
+void fragment() {
+	vec4 base = texture(TEXTURE,UV);
+	if (base.a > 0.0) {
+		COLOR = base ;
+	}
+	
+	else {
+		vec2 image_pixel_size = TEXTURE_PIXEL_SIZE;
+		bool valid_side =
+			texture(TEXTURE,UV + vec2(-image_pixel_size.x,0)).a > 0.0  ||
+			texture(TEXTURE,UV + vec2(image_pixel_size.x,0)).a > 0.0 ||
+			texture(TEXTURE,UV + vec2(0,-image_pixel_size.y)).a > 0.0 ||
+			texture(TEXTURE,UV + vec2(0,image_pixel_size.y)).a > 0.0;
+		bool valid_corner =
+			texture (TEXTURE ,UV + vec2(-image_pixel_size.x,-image_pixel_size.y)).a > 0.0 ||
+			texture (TEXTURE ,UV + vec2(image_pixel_size.x,-image_pixel_size.y)).a > 0.0 ||
+			texture (TEXTURE ,UV + vec2(-image_pixel_size.x,image_pixel_size.y)).a > 0.0 ||
+			texture (TEXTURE ,UV + vec2(image_pixel_size.x,image_pixel_size.y)).a > 0.0 ;
+				
+		if (valid_side || (corner_pixel && valid_corner))
+			COLOR = outline_color;
+				}
+			}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d0tri"]
+shader = SubResource("Shader_jn282")
+shader_parameter/outline_color = Color(0.53, 1, 0.89816666, 0.29411766)
+shader_parameter/corner_pixel = false
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_x1m7j"]
 atlas = ExtResource("2_x1m7j")
 region = Rect2(16, 0, 16, 16)
@@ -56,6 +90,7 @@ script = ExtResource("1_k38lq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=541516490]
 z_index = 1
+material = SubResource("ShaderMaterial_d0tri")
 position = Vector2(16, 16)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_jn282")
@@ -68,6 +103,8 @@ position = Vector2(16, 16)
 scale = Vector2(0.15625, 0.15625)
 color = Color(0.5, 0.5, 0.5, 1)
 texture = ExtResource("3_jn282")
+
+[node name="Click" type="AudioStreamPlayer2D" parent="." unique_id=1209469411]
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
 [connection signal="button_up" from="." to="." method="_on_button_up"]

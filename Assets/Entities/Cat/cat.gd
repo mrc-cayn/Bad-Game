@@ -1,7 +1,6 @@
 extends CharacterBody2D
-
+@export var animated_sprite_2d: AnimatedSprite2D 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var area_2d: Area2D = $Area2D
 @onready var timer: Timer = $Timer
 @onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
@@ -12,11 +11,13 @@ extends CharacterBody2D
 @export var coyote_time : float = 0.15
 @export var friction :float = 2
 @export var speed:float = 2
-@export var shake_amount:float = 20
+@export var shake_amount:float = 120
 @export var max_speed:float = 150
 @export var jump_velocity:int = 4
+@export var ground = true
 @export var time:float = 2
 @export var gravity:int = 5
+var temp_death : bool = false
 var motion = Vector2()
 var motion_previous = Vector2()
 var hit_the_ground = false
@@ -29,28 +30,43 @@ func  _ready() -> void:
 	timer.start()
 	orignal_speed = speed
 	orignal_max_speed = max_speed
-	
 	if is_coyote_time_enabled:
 		add_child(coyote_timer)
 		coyote_timer.wait_time = coyote_time
 		coyote_timer.one_shot = true
 
 func _process(delta: float) -> void:
+	if G.death == true:
+		death()
+	#print(G.death)
 	for i in range(1,200,10):
 		distance(i,25/i)
 		pass
 	animate()
 	
-	if G.death == true:
-		death()
+
 	#print(position.distance_to(get_global_mouse_position()))
 	pass
 
 func death():
-	
-	camera_2d.shake(shake_amount)
-	animated_sprite_2d.speed_scale = Engine.time_scale * animated_sprite_2d.speed_scale  
-	animated_sprite_2d.play("Death")
+	if temp_death == false :
+		var r = randi_range(1,15)
+		print("f")
+		if r == 15 :
+			$Audio/Deep.pitch_scale = audio.pitch_shift()
+			$Audio/Deep.play()
+		if r < 8 :
+			$Audio/Death.pitch_scale = audio.pitch_shift()
+			$Audio/Death.play()
+		else:
+			$Audio/Death1.pitch_scale = audio.pitch_shift()
+			$Audio/Death1.play()
+		camera_2d.shake_amount = 120
+		camera_2d.shake(shake_amount)
+		animated_sprite_2d.play("Death")
+		animated_sprite_2d.speed_scale = Engine.time_scale * animated_sprite_2d.speed_scale  
+		
+		temp_death = true
 
 func distance(distance,increment):
 		if position.distance_to(get_global_mouse_position()) < distance :
@@ -79,6 +95,12 @@ func resize(delta):
 		
 	elif not hit_the_ground:
 		hit_the_ground = true
+		camera_2d.shake_amount = 20
+		shake_amount = 10
+		camera_2d.shake(shake_amount)
+		await get_tree().create_timer(0.05).timeout
+		camera_2d.shake_amount = 0
+		shake_amount = 120
 		$AnimatedSprite2D.scale.x = remap(abs(motion_previous.y), 0.0, 1700.0, 1.1, 1.2)
 		$AnimatedSprite2D.scale.y = remap(abs(motion_previous.y), 0.0, 1700.0, 0.8, 0.5)
 
@@ -114,21 +136,21 @@ func animate():
 	
 	if abs(velocity.x)<5:
 		walking = false
-	
-	if abs(velocity.x)>5:
-		walking = true
-	
-	if is_on_floor() and walking == false :
-		animated_sprite_2d.play("walk_transition")
-		await animated_sprite_2d.animation_finished
-	
-	if is_on_floor() and walking == true :
-		animated_sprite_2d.play("walk")
-		await animated_sprite_2d.animation_finished
-	
-	else :
-		animated_sprite_2d.play("Idle")
-		await animated_sprite_2d.animation_finished
+	if G.death == false :
+		if abs(velocity.x)>5:
+			walking = true
+		
+		if is_on_floor() and walking == false :
+			animated_sprite_2d.play("walk_transition")
+			await animated_sprite_2d.animation_finished
+		
+		if is_on_floor() and walking == true :
+			animated_sprite_2d.play("walk")
+			await animated_sprite_2d.animation_finished
+		
+		else :
+			animated_sprite_2d.play("Idle")
+			await animated_sprite_2d.animation_finished
 		
 
 func move():
@@ -139,8 +161,9 @@ func move():
 		
 	if is_on_floor():
 		velocity.x += dir.x * speed
-		velocity.x = min(velocity.x,max_speed)
-		velocity.x = max(velocity.x,-max_speed)
+		if ground == true :
+			velocity.x = min(velocity.x,max_speed)
+			velocity.x = max(velocity.x,-max_speed)
 		gpu_particles_2d.emitting = true
 
 func _on_timer_timeout() -> void:
@@ -155,11 +178,19 @@ func jump():
 	velocity.y -= jump_velocity * gravity
 	coyote_timer.stop()
 	motion.y = jump_velocity * gravity
+	var r = randi_range(1,3)
+	if r == 1 :
+		$Audio/default.pitch_scale = audio.pitch_shift()
+		$Audio/default.play()
+	if r == 2 :
+		$Audio/short.pitch_scale = audio.pitch_shift() + 1
+		$Audio/short.play()
 
 
 
 func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	if body.is_in_group("player") == false :
+		
 		G.death = true
 		pass
 	pass # Replace with function body.

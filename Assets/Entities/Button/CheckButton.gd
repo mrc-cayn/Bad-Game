@@ -3,7 +3,8 @@ extends CheckButton
 var power:bool = false
 @export var state:int = -1
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var point_light_2d: PointLight2D = $PointLight2D
+@export var point_light_2d: PointLight2D 
+
 
 func _ready() -> void:
 	if state == 1 :
@@ -30,6 +31,6 @@ func _physics_process(delta: float) -> void:
 		point_light_2d.enabled = true
 	if power == false :
 		await  animated_sprite_2d.animation_finished
-		print("l")
+		#print("l")
 		point_light_2d.enabled = false
 		pass

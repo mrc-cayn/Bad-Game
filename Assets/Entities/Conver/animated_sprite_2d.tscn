@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://b0k5pb36dhf7o"]
+
+[ext_resource type="Texture2D" uid="uid://bc128fpjwbrf1" path="res://Assets/Entities/Conver/Sprite-0001-Sheet.png" id="2_yvdbg"]
+
+[sub_resource type="Shader" id="Shader_ho5ln"]
+code = "shader_type canvas_item;
+uniform vec4 outline_color : source_color = vec4(0.0,0.0,0.0,0.1);
+uniform bool corner_pixel = false ;
+
+void fragment() {
+	vec4 base = texture(TEXTURE,UV);
+	if (base.a > 0.0) {
+		COLOR = base ;
+	}
+	
+	else {
+		vec2 image_pixel_size = TEXTURE_PIXEL_SIZE;
+		bool valid_side =
+			texture(TEXTURE,UV + vec2(-image_pixel_size.x,0)).a > 0.0  ||
+			texture(TEXTURE,UV + vec2(image_pixel_size.x,0)).a > 0.0 ||
+			texture(TEXTURE,UV + vec2(0,-image_pixel_size.y)).a > 0.0 ||
+			texture(TEXTURE,UV + vec2(0,image_pixel_size.y)).a > 0.0;
+		bool valid_corner =
+			texture (TEXTURE ,UV + vec2(-image_pixel_size.x,-image_pixel_size.y)).a > 0.0 ||
+			texture (TEXTURE ,UV + vec2(image_pixel_size.x,-image_pixel_size.y)).a > 0.0 ||
+			texture (TEXTURE ,UV + vec2(-image_pixel_size.x,image_pixel_size.y)).a > 0.0 ||
+			texture (TEXTURE ,UV + vec2(image_pixel_size.x,image_pixel_size.y)).a > 0.0 ;
+				
+		if (valid_side || (corner_pixel && valid_corner))
+			COLOR = outline_color;
+				}
+			}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i8324"]
+shader = SubResource("Shader_ho5ln")
+shader_parameter/outline_color = Color(0.36540002, 0.47123992, 0.63, 0.37254903)
+shader_parameter/corner_pixel = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h475o"]
+atlas = ExtResource("2_yvdbg")
+region = Rect2(0, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqf46"]
+atlas = ExtResource("2_yvdbg")
+region = Rect2(16, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqf1t"]
+atlas = ExtResource("2_yvdbg")
+region = Rect2(32, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0d6c"]
+atlas = ExtResource("2_yvdbg")
+region = Rect2(48, 0, 16, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6yfw3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h475o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqf46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqf1t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0d6c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 16.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_i8324"]
+script/source = "extends AnimatedSprite2D
+
+var speed 
+
+func _ready() -> void:
+	speed = speed_scale
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if get_parent().is_in_group(\"conver\"):
+		if get_parent().dir.x == 1 :
+			speed_scale = -speed
+		else :
+			speed_scale = speed
+		pass
+	pass
+"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" unique_id=1772252916]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_i8324")
+position = Vector2(0, 4)
+scale = Vector2(1, 1.625)
+sprite_frames = SubResource("SpriteFrames_6yfw3")
+autoplay = "default"
+frame_progress = 0.47245142
+speed_scale = -1.5
+script = SubResource("GDScript_i8324")

@@ -8,6 +8,40 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_esbq3"]
 size = Vector2(20, 28)
 
+[sub_resource type="Shader" id="Shader_qeitg"]
+code = "shader_type canvas_item;
+uniform vec4 outline_color : source_color = vec4(0.0,0.0,0.0,0.1);
+uniform bool corner_pixel = false ;
+
+void fragment() {
+	vec4 base = texture(TEXTURE,UV);
+	if (base.a > 0.0) {
+		COLOR = base ;
+	}
+	
+	else {
+		vec2 image_pixel_size = TEXTURE_PIXEL_SIZE;
+		bool valid_side =
+			texture(TEXTURE,UV + vec2(-image_pixel_size.x,0)).a > 0.0  ||
+			texture(TEXTURE,UV + vec2(image_pixel_size.x,0)).a > 0.0 ||
+			texture(TEXTURE,UV + vec2(0,-image_pixel_size.y)).a > 0.0 ||
+			texture(TEXTURE,UV + vec2(0,image_pixel_size.y)).a > 0.0;
+		bool valid_corner =
+			texture (TEXTURE ,UV + vec2(-image_pixel_size.x,-image_pixel_size.y)).a > 0.0 ||
+			texture (TEXTURE ,UV + vec2(image_pixel_size.x,-image_pixel_size.y)).a > 0.0 ||
+			texture (TEXTURE ,UV + vec2(-image_pixel_size.x,image_pixel_size.y)).a > 0.0 ||
+			texture (TEXTURE ,UV + vec2(image_pixel_size.x,image_pixel_size.y)).a > 0.0 ;
+				
+		if (valid_side || (corner_pixel && valid_corner))
+			COLOR = outline_color;
+				}
+			}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6hoa7"]
+shader = SubResource("Shader_qeitg")
+shader_parameter/outline_color = Color(0.2632, 0.47, 0.3424733, 0.45490196)
+shader_parameter/corner_pixel = false
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_r40wk"]
 atlas = ExtResource("2_ndlvu")
 region = Rect2(0, 0, 18, 32)
@@ -213,6 +247,7 @@ shape = SubResource("RectangleShape2D_esbq3")
 debug_color = Color(1, 0.46733332, 0.060000002, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1464335335]
+material = SubResource("ShaderMaterial_6hoa7")
 sprite_frames = SubResource("SpriteFrames_smlqv")
 autoplay = "default"
 frame_progress = 0.8870632

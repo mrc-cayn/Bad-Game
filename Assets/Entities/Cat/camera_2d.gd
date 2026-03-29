@@ -24,6 +24,8 @@ func _process(delta):
 		if cat.position.x <= position.x :
 			if $"../../AnimationPlayer2/Camera2D".position.x >= position.x :
 				position.x = $"../../AnimationPlayer2/Camera2D".position.x
+			else :
+				position.x = cat.position.x
 
 
 func shake(new_shake, shake_time:=1, shake_limit=1000):

@@ -22,7 +22,7 @@ func  _process(delta: float) -> void:
 	
 	if G.moving == true :
 		var tween := get_tree().create_tween().set_parallel(true)
-		tween.tween_property($Node2D,"global_position:x",(4408-256),100)
+		tween.tween_property($Node2D,"global_position:x",(4408-128),100)
 		tween.tween_property($Node2D,"global_position:y",-320,100)
 		
 	if Input.is_action_just_pressed("ui_end") :

@@ -1,11 +1,7 @@
 [gd_scene format=3 uid="uid://bgjlclukv1kmn"]
 
-[ext_resource type="Script" uid="uid://cmgo3w8b80xc8" path="res://template_button.gd" id="1_et1ub"]
-
 [node name="TextureButton" type="TextureButton" unique_id=1717681460]
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_et1ub")
-target_scene_path = null
 
 [connection signal="button_up" from="." to="." method="_on_button_up"]

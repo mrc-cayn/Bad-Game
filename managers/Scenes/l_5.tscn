@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dkx4xb0fmfj6x" path="res://Assets/Sprites/Glow.png" id="11_og8yr"]
 [ext_resource type="PackedScene" uid="uid://4v8phbxfegj7" path="res://Assets/Entities/PIoan/poiaon.tscn" id="12_2ep6y"]
 [ext_resource type="PackedScene" uid="uid://ivjeacoqrml0" path="res://managers/Scenes/Background.tscn" id="12_og8yr"]
+[ext_resource type="Theme" uid="uid://ctstjshwmp4m4" path="res://Assets/default.tres" id="13_llreo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sfabp"]
 texture = ExtResource("9_tfac5")
@@ -140,3 +141,12 @@ shadow_enabled = true
 texture = ExtResource("11_og8yr")
 
 [node name="AnimationPlayer" parent="Lighting2" unique_id=1080574321 instance=ExtResource("12_og8yr")]
+
+[node name="Label2" type="Label" parent="." unique_id=1830750501]
+offset_left = -232.0
+offset_top = -264.0
+offset_right = 7524.0
+offset_bottom = 999.0
+scale = Vector2(0.05, 0.05)
+theme = ExtResource("13_llreo")
+text = "Level 5"

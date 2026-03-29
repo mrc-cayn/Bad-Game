@@ -2,11 +2,26 @@
 
 [ext_resource type="Texture2D" uid="uid://ce8bbtkhiqrx6" path="res://Assets/Entities/Cat/Sprite-0002.png" id="1_einrq"]
 [ext_resource type="Shader" uid="uid://ddxgjcn15adry" path="res://addons/alo transition/transition.gdshader" id="2_hx4y0"]
+[ext_resource type="Material" uid="uid://cpr37slmvuug1" path="res://Assets/inversion.tres" id="2_ne5yd"]
 [ext_resource type="Texture2D" uid="uid://cq060j3i3nywb" path="res://extra/Background.png" id="3_hx4y0"]
 [ext_resource type="Texture2D" uid="uid://c8wml5k8apt8q" path="res://extra/grid1.png" id="3_lubti"]
 [ext_resource type="Script" uid="uid://bx3h0fwcu727k" path="res://managers/Scenes/background.gd" id="4_brmsf"]
 [ext_resource type="Texture2D" uid="uid://djse0tebdc6hi" path="res://extra/grid.png" id="4_lubti"]
 [ext_resource type="Texture2D" uid="uid://dr7fjf0tpsat7" path="res://extra/Templates/64.png" id="7_ne5yd"]
+[ext_resource type="PackedScene" uid="uid://bgjlclukv1kmn" path="res://managers/texture_button.tscn" id="9_lv8vk"]
+[ext_resource type="Theme" uid="uid://ctstjshwmp4m4" path="res://Assets/default.tres" id="10_wf1uk"]
+[ext_resource type="Texture2D" uid="uid://wbb66wlhvkqk" path="res://managers/Scenes/Thumnail/1 (1).png" id="11_prf17"]
+[ext_resource type="Script" uid="uid://ib2fyr3au68x" path="res://managers/template_texture_button.gd" id="11_wf1uk"]
+[ext_resource type="Texture2D" uid="uid://blikq0cacx6dv" path="res://managers/Scenes/Thumnail/1 (2).png" id="13_u3rdf"]
+[ext_resource type="Texture2D" uid="uid://dtss1oimjk2dq" path="res://managers/Scenes/Thumnail/1 (3).png" id="14_0hko5"]
+[ext_resource type="Texture2D" uid="uid://btb8syttx0w1u" path="res://managers/Scenes/Thumnail/1 (4).png" id="15_tqni8"]
+[ext_resource type="Texture2D" uid="uid://c6jak0750uww8" path="res://managers/Scenes/Thumnail/1 (5).png" id="16_8d512"]
+[ext_resource type="Texture2D" uid="uid://82j7lnjc2qox" path="res://managers/Scenes/Thumnail/1 (6).png" id="17_48y3h"]
+[ext_resource type="Texture2D" uid="uid://eufhpgdyutbo" path="res://managers/Scenes/Thumnail/1 (7).png" id="18_uab64"]
+[ext_resource type="Texture2D" uid="uid://q584crvuox46" path="res://managers/Scenes/Thumnail/1 (8).png" id="19_e0ona"]
+[ext_resource type="Texture2D" uid="uid://djwwmfco7dr4x" path="res://managers/Scenes/Thumnail/1 (9).png" id="20_harr2"]
+[ext_resource type="Texture2D" uid="uid://n8fltppyxq6l" path="res://managers/Scenes/Thumnail/1 (10).png" id="21_uwrjs"]
+[ext_resource type="Texture2D" uid="uid://dpw3h4htq3d3k" path="res://managers/Scenes/Thumnail/1 (11).png" id="22_b2ek3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lubti"]
 shader = ExtResource("2_hx4y0")
@@ -33,7 +48,7 @@ shader_parameter/progress_bias = Vector2(0, 0)
 [sub_resource type="Animation" id="Animation_x0qb8"]
 resource_name = "Loop"
 length = 5.0
-loop_mode = 2
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -116,7 +131,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0, 2.5, 5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(-272, -416), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(-40, -60), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_u1f04"]
@@ -240,6 +255,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(128, 128)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/Node2D/Sprite2D3:material:shader_parameter/active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5, 10, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
 
 [sub_resource type="Animation" id="Animation_gwbwd"]
 resource_name = "Move"
@@ -269,6 +296,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(),
 "update": 0,
 "values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/Node2D/Sprite2D3:material:shader_parameter/active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s588d"]
@@ -328,11 +367,70 @@ shader_parameter/progress_bias = Vector2(0, 0)
 [sub_resource type="AtlasTexture" id="AtlasTexture_2b0a7"]
 atlas = ExtResource("4_lubti")
 
+[sub_resource type="Curve" id="Curve_prf17"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_u3rdf"]
+curve = SubResource("Curve_prf17")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0hko5"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 34.75
+emission_ring_inner_radius = 12.0
+emission_ring_cone_angle = 90.0
+angle_min = -360.0
+angle_max = 360.00003
+orbit_velocity_min = -0.49999994
+orbit_velocity_max = 0.5000001
+radial_velocity_min = 9.999977
+radial_velocity_max = 9.999977
+gravity = Vector3(0, 10, 0)
+radial_accel_min = -8.000002
+radial_accel_max = 11.999997
+scale_min = 0.0
+scale_max = 8.0
+scale_curve = SubResource("CurveTexture_u3rdf")
+hue_variation_min = -0.100000024
+hue_variation_max = 0.09999997
+
 [node name="Level_select" type="Node2D" unique_id=495151369]
+position = Vector2(-552, -496)
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1475098718]
-offset_right = 384.0
-offset_bottom = 312.0
+offset_left = 500.80005
+offset_top = 443.20013
+offset_right = 884.80005
+offset_bottom = 755.20013
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_einrq")
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=1069554509]
+offset_left = 564.80005
+offset_top = 443.20013
+offset_right = 948.80005
+offset_bottom = 755.20013
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_einrq")
+
+[node name="TextureRect4" type="TextureRect" parent="." unique_id=188995787]
+material = ExtResource("2_ne5yd")
+offset_left = 564.80005
+offset_top = 515.20013
+offset_right = 948.80005
+offset_bottom = 827.20013
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_einrq")
+
+[node name="TextureRect5" type="TextureRect" parent="." unique_id=1460092853]
+offset_left = 500.80005
+offset_top = 515.20013
+offset_right = 884.80005
+offset_bottom = 827.20013
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_einrq")
 
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=1296818653]
@@ -353,6 +451,8 @@ autoplay = &"Loop"
 script = ExtResource("4_brmsf")
 
 [node name="Node2D" type="Node2D" parent="AnimationPlayer" unique_id=1040214145]
+modulate = Color(1, 1, 1, 0.5882353)
+material = ExtResource("2_ne5yd")
 
 [node name="Sprite2D" type="Sprite2D" parent="AnimationPlayer/Node2D" unique_id=1773375651]
 self_modulate = Color(0.18717611, 0.18717617, 0.18717599, 1)
@@ -369,11 +469,312 @@ scale = Vector2(64, 64)
 texture = SubResource("AtlasTexture_2b0a7")
 
 [node name="Sprite2D3" type="Sprite2D" parent="AnimationPlayer/Node2D" unique_id=1127334656]
-self_modulate = Color(0.24477637, 0.2447764, 0.24477637, 1)
+self_modulate = Color(0, 0, 0, 1)
+top_level = true
 light_mask = 7
 visibility_layer = 7
 z_index = -20
 z_as_relative = false
-position = Vector2(8.000008, -4.5776367e-05)
-scale = Vector2(26.625004, 19.125)
+material = ExtResource("2_ne5yd")
+position = Vector2(-8, -3.8146973e-06)
+scale = Vector2(46.9, 33.600002)
 texture = ExtResource("7_ne5yd")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=664536883]
+position = Vector2(552, 496)
+
+[node name="Buttons" type="Node2D" parent="." unique_id=1930632346]
+
+[node name="1" parent="Buttons" unique_id=1717681460 instance=ExtResource("9_lv8vk")]
+offset_left = 520.0
+offset_top = 656.0
+offset_right = 584.0
+offset_bottom = 720.0
+scale = Vector2(0.05, 0.05)
+theme = ExtResource("10_wf1uk")
+texture_normal = ExtResource("11_prf17")
+script = ExtResource("11_wf1uk")
+level_select = true
+
+[node name="Label" type="Label" parent="Buttons/1" unique_id=1657110562]
+layout_mode = 0
+offset_left = 480.0
+offset_right = 706.0
+offset_bottom = 630.0
+scale = Vector2(1.6, 1.6)
+text = "1"
+
+[node name="2" parent="Buttons" unique_id=384196222 instance=ExtResource("9_lv8vk")]
+offset_left = 616.0
+offset_top = 624.0
+offset_right = 680.0
+offset_bottom = 688.0
+scale = Vector2(0.05, 0.05)
+theme = ExtResource("10_wf1uk")
+texture_normal = ExtResource("13_u3rdf")
+script = ExtResource("11_wf1uk")
+level_select = true
+
+[node name="Label2" type="Label" parent="Buttons/2" unique_id=1302070930]
+layout_mode = 0
+offset_left = 480.0
+offset_right = 706.0
+offset_bottom = 630.0
+scale = Vector2(1.6, 1.6)
+text = "2
+"
+
+[node name="3" parent="Buttons" unique_id=469067643 instance=ExtResource("9_lv8vk")]
+offset_left = 704.0
+offset_top = 560.0
+offset_right = 768.0
+offset_bottom = 624.0
+scale = Vector2(0.05, 0.05)
+theme = ExtResource("10_wf1uk")
+texture_normal = ExtResource("14_0hko5")
+script = ExtResource("11_wf1uk")
+level_select = true
+
+[node name="Label3" type="Label" parent="Buttons/3" unique_id=1002144522]
+layout_mode = 0
+offset_left = 480.0
+offset_right = 706.0
+offset_bottom = 630.0
+scale = Vector2(1.6, 1.6)
+text = "3
+"
+
+[node name="4" parent="Buttons" unique_id=157645423 instance=ExtResource("9_lv8vk")]
+offset_left = 744.0
+offset_top = 464.0
+offset_right = 808.0
+offset_bottom = 528.0
+scale = Vector2(0.05, 0.05)
+theme = ExtResource("10_wf1uk")
+texture_normal = ExtResource("15_tqni8")
+script = ExtResource("11_wf1uk")
+level_select = true
+
+[node name="Label4" type="Label" parent="Buttons/4" unique_id=1501095292]
+layout_mode = 0
+offset_left = 480.0
+offset_top = -0.00012207031
+offset_right = 706.0
+offset_bottom = 629.9999
+scale = Vector2(1.6, 1.6)
+text = "4
+"
+
+[node name="5" parent="Buttons" unique_id=1719128836 instance=ExtResource("9_lv8vk")]
+offset_left = 704.0
+offset_top = 368.0
+offset_right = 768.0
+offset_bottom = 432.0
+scale = Vector2(0.05, 0.05)
+theme = ExtResource("10_wf1uk")
+texture_normal = ExtResource("16_8d512")
+script = ExtResource("11_wf1uk")
+level_select = true
+
+[node name="Label5" type="Label" parent="Buttons/5" unique_id=729027413]
+layout_mode = 0
+offset_left = 480.0
+offset_right = 706.0
+offset_bottom = 630.0
+scale = Vector2(1.6, 1.6)
+text = "5
+"
+
+[node name="6" parent="Buttons" unique_id=336051950 instance=ExtResource("9_lv8vk")]
+offset_left = 616.0
+offset_top = 304.0
+offset_right = 680.0
+offset_bottom = 368.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("10_wf1uk")
+texture_normal = ExtResource("17_48y3h")
+script = ExtResource("11_wf1uk")
+level_select = true
+
+[node name="Label6" type="Label" parent="Buttons/6" unique_id=1362003020]
+layout_mode = 0
+offset_left = 240.0
+offset_top = -79.99999
+offset_right = 466.0
+offset_bottom = 550.0
+scale = Vector2(0.90000004, 0.90000004)
+text = "6
+"
+
+[node name="7" parent="Buttons" unique_id=672824021 instance=ExtResource("9_lv8vk")]
+offset_left = 520.0
+offset_top = 272.0
+offset_right = 584.0
+offset_bottom = 336.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("10_wf1uk")
+texture_normal = ExtResource("18_uab64")
+script = ExtResource("11_wf1uk")
+level_select = true
+
+[node name="Label7" type="Label" parent="Buttons/7" unique_id=55919523]
+layout_mode = 0
+offset_left = 239.99982
+offset_top = -80.0
+offset_right = 465.99982
+offset_bottom = 550.0
+scale = Vector2(0.90000004, 0.90000004)
+text = "7
+"
+
+[node name="8" parent="Buttons" unique_id=1054825117 instance=ExtResource("9_lv8vk")]
+offset_left = 424.0
+offset_top = 304.0
+offset_right = 488.0
+offset_bottom = 368.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("10_wf1uk")
+texture_normal = ExtResource("19_e0ona")
+script = ExtResource("11_wf1uk")
+level_select = true
+
+[node name="Label8" type="Label" parent="Buttons/8" unique_id=324001762]
+layout_mode = 0
+offset_left = 239.99988
+offset_top = -80.0
+offset_right = 465.99988
+offset_bottom = 550.0
+scale = Vector2(0.90000004, 0.90000004)
+text = "8"
+
+[node name="9" parent="Buttons" unique_id=29995895 instance=ExtResource("9_lv8vk")]
+offset_left = 336.0
+offset_top = 368.0
+offset_right = 400.0
+offset_bottom = 432.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("10_wf1uk")
+texture_normal = ExtResource("20_harr2")
+script = ExtResource("11_wf1uk")
+level_select = true
+
+[node name="Label9" type="Label" parent="Buttons/9" unique_id=396281830]
+layout_mode = 0
+offset_left = 160.0
+offset_top = -80.0
+offset_right = 386.0
+offset_bottom = 550.0
+scale = Vector2(0.90000004, 0.90000004)
+text = "9"
+
+[node name="10" parent="Buttons" unique_id=1311193232 instance=ExtResource("9_lv8vk")]
+offset_left = 296.0
+offset_top = 464.0
+offset_right = 360.0
+offset_bottom = 528.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("10_wf1uk")
+texture_normal = ExtResource("21_uwrjs")
+script = ExtResource("11_wf1uk")
+level_select = true
+
+[node name="Label10" type="Label" parent="Buttons/10" unique_id=873802126]
+layout_mode = 0
+offset_left = 79.999985
+offset_top = -80.0
+offset_right = 579.0
+offset_bottom = 550.0
+scale = Vector2(0.90000004, 0.90000004)
+text = "10"
+
+[node name="11" parent="Buttons" unique_id=1738430850 instance=ExtResource("9_lv8vk")]
+offset_left = 336.0
+offset_top = 560.0
+offset_right = 400.0
+offset_bottom = 624.0
+scale = Vector2(0.05, 0.05)
+theme = ExtResource("10_wf1uk")
+texture_normal = ExtResource("22_b2ek3")
+script = ExtResource("11_wf1uk")
+level_select = true
+
+[node name="Label11" type="Label" parent="Buttons/11" unique_id=1184853330]
+layout_mode = 0
+offset_left = 320.0
+offset_top = -6.1035156e-05
+offset_right = 772.0
+offset_bottom = 629.99994
+scale = Vector2(1.6, 1.6)
+text = "11"
+
+[node name="12" parent="Buttons" unique_id=1123547966 instance=ExtResource("9_lv8vk")]
+offset_left = 424.0
+offset_top = 624.0
+offset_right = 488.0
+offset_bottom = 688.0
+theme = ExtResource("10_wf1uk")
+texture_normal = ExtResource("7_ne5yd")
+script = ExtResource("11_wf1uk")
+level_select = true
+
+[node name="Label12" type="Label" parent="Buttons/12" unique_id=137567471]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 8.000001
+offset_right = 496.0
+offset_bottom = 630.0
+scale = Vector2(0.1, 0.1)
+text = "12"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1650148824]
+modulate = Color(0.5, 0.5, 0.5, 1)
+z_index = 3
+position = Vector2(552, 496)
+scale = Vector2(3, 3)
+amount = 48
+lifetime = 1.5
+explosiveness = 0.4
+randomness = 0.5
+fixed_fps = 64
+interpolate = false
+local_coords = true
+trail_enabled = true
+trail_lifetime = 0.1
+trail_sections = 4
+trail_section_subdivisions = 2
+process_material = SubResource("ParticleProcessMaterial_0hko5")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="." unique_id=331163905]
+modulate = Color(0, 0, 0, 1)
+z_index = 3
+position = Vector2(552, 496)
+scale = Vector2(3, 3)
+amount = 48
+lifetime = 1.5
+explosiveness = 0.4
+randomness = 0.5
+fixed_fps = 64
+interpolate = false
+local_coords = true
+trail_enabled = true
+trail_lifetime = 0.1
+trail_sections = 4
+trail_section_subdivisions = 2
+process_material = SubResource("ParticleProcessMaterial_0hko5")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="." unique_id=659085978]
+z_index = 3
+position = Vector2(552, 496)
+scale = Vector2(3, 3)
+amount = 48
+lifetime = 1.5
+explosiveness = 0.4
+randomness = 0.5
+fixed_fps = 64
+interpolate = false
+local_coords = true
+trail_enabled = true
+trail_lifetime = 0.1
+trail_sections = 4
+trail_section_subdivisions = 2
+process_material = SubResource("ParticleProcessMaterial_0hko5")

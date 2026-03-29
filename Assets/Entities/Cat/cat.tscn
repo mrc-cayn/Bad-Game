@@ -2,11 +2,15 @@
 
 [ext_resource type="Script" uid="uid://cjxvyltk8os3f" path="res://Assets/Entities/Cat/cat.gd" id="1_gd3th"]
 [ext_resource type="Texture2D" uid="uid://byddfisrlkeqe" path="res://Assets/Entities/Cat/Animations/Idle.tres" id="2_b5tg2"]
-[ext_resource type="Material" uid="uid://wfu3qmlx5ct7" path="res://Assets/new_shader_material.tres" id="2_h57f5"]
 [ext_resource type="Texture2D" uid="uid://c8yw5si8lfutd" path="res://Assets/Entities/Cat/Cat-Deathpng.png" id="2_jolvo"]
 [ext_resource type="Texture2D" uid="uid://dakv47kgkaku8" path="res://Assets/Entities/Cat/Animations/Walk.tres" id="3_gd3th"]
 [ext_resource type="Texture2D" uid="uid://c3br1mdbw61ha" path="res://Assets/Entities/Cat/Cadt.png" id="3_jolvo"]
 [ext_resource type="Script" uid="uid://ddqyhcusom77i" path="res://Assets/Entities/Cat/camera_2d.gd" id="6_ocmoh"]
+[ext_resource type="AudioStream" uid="uid://br3qpqpij4awh" path="res://Assets/Audio/Cat/Death.mp3" id="7_h57f5"]
+[ext_resource type="AudioStream" uid="uid://bhidgldlyw5w8" path="res://Assets/Audio/Cat/death1.wav" id="8_y6dj3"]
+[ext_resource type="AudioStream" uid="uid://cb4tbrds7gg0j" path="res://Assets/Audio/Cat/Deep_meowmp3.mp3" id="9_v13gc"]
+[ext_resource type="AudioStream" uid="uid://c3wd16h0qcmi5" path="res://Assets/Audio/Cat/meow_defaultmp3.mp3" id="10_r8of3"]
+[ext_resource type="AudioStream" uid="uid://dw3nebb75lgso" path="res://Assets/Audio/Cat/short_meow.mp3" id="11_g3sy6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gd3th"]
 radius = 8.0
@@ -14,6 +18,40 @@ height = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gd3th"]
 radius = 2.0
+
+[sub_resource type="Shader" id="Shader_ocmoh"]
+code = "shader_type canvas_item;
+uniform vec4 outline_color : source_color = vec4(0.0,0.0,0.0,0.1);
+uniform bool corner_pixel = false ;
+
+void fragment() {
+	vec4 base = texture(TEXTURE,UV);
+	if (base.a > 0.0) {
+		COLOR = base ;
+	}
+	
+	else {
+		vec2 image_pixel_size = TEXTURE_PIXEL_SIZE;
+		bool valid_side =
+			texture(TEXTURE,UV + vec2(-image_pixel_size.x,0)).a > 0.0  ||
+			texture(TEXTURE,UV + vec2(image_pixel_size.x,0)).a > 0.0 ||
+			texture(TEXTURE,UV + vec2(0,-image_pixel_size.y)).a > 0.0 ||
+			texture(TEXTURE,UV + vec2(0,image_pixel_size.y)).a > 0.0;
+		bool valid_corner =
+			texture (TEXTURE ,UV + vec2(-image_pixel_size.x,-image_pixel_size.y)).a > 0.0 ||
+			texture (TEXTURE ,UV + vec2(image_pixel_size.x,-image_pixel_size.y)).a > 0.0 ||
+			texture (TEXTURE ,UV + vec2(-image_pixel_size.x,image_pixel_size.y)).a > 0.0 ||
+			texture (TEXTURE ,UV + vec2(image_pixel_size.x,image_pixel_size.y)).a > 0.0 ;
+				
+		if (valid_side || (corner_pixel && valid_corner))
+			COLOR = outline_color;
+				}
+			}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h57f5"]
+shader = SubResource("Shader_ocmoh")
+shader_parameter/outline_color = Color(0.47, 0.31168833, 0.24909998, 0.70980394)
+shader_parameter/corner_pixel = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r8of3"]
 atlas = ExtResource("2_jolvo")
@@ -223,9 +261,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uhlkq")
 }],
-"loop": true,
+"loop": false,
 "name": &"Death",
-"speed": 120.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -329,7 +367,7 @@ collision_bounce = 0.0
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gd3th"]
 polygon = PackedVector2Array(-14, -2, -13, 4, -9, 4, -6, 1, 4, 1, 4, -7, 6, -8, 6, -6, 11, -6, 13, -8, 16, -3, 16, 0, 12, 8, 11, 10, 13, 16, 10, 16, 8, 12, 8, 16, 4, 16, 4, 11, -1, 11, 1, 15, 1, 16, -2, 16, -5, 13, -6, 16, -9, 16, -10, 12, -9, 8, -16, 6, -16, -1)
 
-[node name="Cat" type="CharacterBody2D" unique_id=1802388711 groups=["player"]]
+[node name="Cat" type="CharacterBody2D" unique_id=1802388711 node_paths=PackedStringArray("animated_sprite_2d") groups=["player"]]
 z_index = 3
 collision_layer = 2
 collision_mask = 3
@@ -337,6 +375,7 @@ slide_on_ceiling = false
 floor_constant_speed = true
 floor_max_angle = 1.0471976
 script = ExtResource("1_gd3th")
+animated_sprite_2d = NodePath("AnimatedSprite2D")
 jump_velocity = 30
 time = 0.8
 gravity = 15
@@ -356,10 +395,10 @@ position = Vector2(2, 6)
 shape = SubResource("CircleShape2D_gd3th")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=973035221]
-material = ExtResource("2_h57f5")
+material = SubResource("ShaderMaterial_h57f5")
 position = Vector2(0, 16)
 sprite_frames = SubResource("SpriteFrames_g3sy6")
-animation = &"Idle"
+animation = &"walk_transition"
 autoplay = "Idle"
 offset = Vector2(0, -16)
 
@@ -383,14 +422,44 @@ z_index = 1
 position = Vector2(0, -68)
 limit_enabled = false
 position_smoothing_enabled = true
+drag_left_margin = 0.5
+drag_right_margin = 0.5
+drag_bottom_margin = 0.4
+editor_draw_drag_margin = true
 script = ExtResource("6_ocmoh")
 
 [node name="Timer" type="Timer" parent="Camera2D" unique_id=674585263]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1760634321]
-visible = false
 occluder = SubResource("OccluderPolygon2D_gd3th")
 occluder_light_mask = 15
+
+[node name="Audio" type="Node" parent="." unique_id=1772802772]
+
+[node name="Death" type="AudioStreamPlayer2D" parent="Audio" unique_id=1391695908]
+stream = ExtResource("7_h57f5")
+volume_db = 8.0
+bus = &"SFX"
+
+[node name="Death1" type="AudioStreamPlayer2D" parent="Audio" unique_id=869942633]
+stream = ExtResource("8_y6dj3")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="Deep" type="AudioStreamPlayer2D" parent="Audio" unique_id=94335621]
+stream = ExtResource("9_v13gc")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="default" type="AudioStreamPlayer2D" parent="Audio" unique_id=547915058]
+stream = ExtResource("10_r8of3")
+volume_db = -6.0
+bus = &"SFX"
+
+[node name="short" type="AudioStreamPlayer2D" parent="Audio" unique_id=984797208]
+stream = ExtResource("11_g3sy6")
+pitch_scale = 2.0
+bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]

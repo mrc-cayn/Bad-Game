@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://c0scrkmg2vg7x" path="res://Assets/Entities/Win_hitbox/win_hitbox.gd" id="1_gjo7e"]
 [ext_resource type="Texture2D" uid="uid://dkx4xb0fmfj6x" path="res://Assets/Sprites/Glow.png" id="3_ig8wb"]
+[ext_resource type="AudioStream" uid="uid://cob7am0280gqi" path="res://Assets/Audio/SFX/win_1.wav" id="3_mx34j"]
+[ext_resource type="AudioStream" uid="uid://bdtlr6lj1ci40" path="res://Assets/Audio/SFX/Win.wav" id="4_utfca"]
+[ext_resource type="AudioStream" uid="uid://c1l707vgtaefk" path="res://Assets/Audio/SFX/win_3.wav" id="5_nmw7b"]
+[ext_resource type="AudioStream" uid="uid://brmr4y6codu76" path="res://Assets/Audio/SFX/Portal.wav" id="6_o63aj"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dd2x1"]
 
@@ -22,5 +26,21 @@ max_distance = 128.0
 color = Color(0, 1, 0.35000014, 1)
 texture = ExtResource("3_ig8wb")
 texture_scale = 0.5
+
+[node name="win_1" type="AudioStreamPlayer2D" parent="." unique_id=1421921842]
+stream = ExtResource("3_mx34j")
+bus = &"SFX"
+
+[node name="win" type="AudioStreamPlayer2D" parent="." unique_id=685299754]
+stream = ExtResource("4_utfca")
+bus = &"SFX"
+
+[node name="win_2" type="AudioStreamPlayer2D" parent="." unique_id=1035963325]
+stream = ExtResource("5_nmw7b")
+bus = &"SFX"
+
+[node name="win_3" type="AudioStreamPlayer2D" parent="." unique_id=1323600228]
+stream = ExtResource("6_o63aj")
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

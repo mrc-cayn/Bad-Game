@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cuif2fi3s56cq"]
 
 [ext_resource type="Texture2D" uid="uid://ce8bbtkhiqrx6" path="res://Assets/Entities/Cat/Sprite-0002.png" id="1_0yqqc"]
-[ext_resource type="Shader" uid="uid://cffknj31wnlfc" path="res://globals/outline.gdshader" id="1_fj8al"]
 [ext_resource type="Texture2D" uid="uid://dkx4xb0fmfj6x" path="res://Assets/Sprites/Glow.png" id="2_urkqf"]
 
 [sub_resource type="GDScript" id="GDScript_0xm2m"]
@@ -349,13 +348,39 @@ func calculate_speed(p_max_speed, p_friction):
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_urkqf"]
 size = Vector2(32, 32)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_avko0"]
-shader = ExtResource("1_fj8al")
-shader_parameter/outline_cotor = Color(0, 0, 0, 0.1)
-shader_parameter/corner_pixet = false
+[sub_resource type="Shader" id="Shader_urkqf"]
+code = "shader_type canvas_item;
+uniform vec4 outline_color : source_color = vec4(0.0,0.0,0.0,0.1);
+uniform bool corner_pixel = false ;
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1bvp3"]
-radius = 16.0
+void fragment() {
+	vec4 base = texture(TEXTURE,UV);
+	if (base.a > 0.0) {
+		COLOR = base ;
+	}
+	
+	else {
+		vec2 image_pixel_size = TEXTURE_PIXEL_SIZE;
+		bool valid_side =
+			texture(TEXTURE,UV + vec2(-image_pixel_size.x,0)).a > 0.0  ||
+			texture(TEXTURE,UV + vec2(image_pixel_size.x,0)).a > 0.0 ||
+			texture(TEXTURE,UV + vec2(0,-image_pixel_size.y)).a > 0.0 ||
+			texture(TEXTURE,UV + vec2(0,image_pixel_size.y)).a > 0.0;
+		bool valid_corner =
+			texture (TEXTURE ,UV + vec2(-image_pixel_size.x,-image_pixel_size.y)).a > 0.0 ||
+			texture (TEXTURE ,UV + vec2(image_pixel_size.x,-image_pixel_size.y)).a > 0.0 ||
+			texture (TEXTURE ,UV + vec2(-image_pixel_size.x,image_pixel_size.y)).a > 0.0 ||
+			texture (TEXTURE ,UV + vec2(image_pixel_size.x,image_pixel_size.y)).a > 0.0 ;
+				
+		if (valid_side || (corner_pixel && valid_corner))
+			COLOR = outline_color;
+				}
+			}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_avko0"]
+shader = SubResource("Shader_urkqf")
+shader_parameter/outline_color = Color(1, 0.71000004, 0.71000004, 0.9490196)
+shader_parameter/corner_pixel = false
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_urkqf"]
 polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -416,9 +441,9 @@ texture = ExtResource("1_0yqqc")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=822064906 groups=["player"]]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1604398851 groups=["player"]]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D" unique_id=480181659 groups=["player"]]
 z_index = 1
-shape = SubResource("CircleShape2D_1bvp3")
+shape = SubResource("RectangleShape2D_urkqf")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1475635210]
 scale = Vector2(0.43750003, 0.43750003)
@@ -426,6 +451,7 @@ blend_mode = 1
 texture = ExtResource("2_urkqf")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=807719291]
+visible = false
 occluder = SubResource("OccluderPolygon2D_urkqf")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=690134967]

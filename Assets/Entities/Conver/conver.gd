@@ -12,6 +12,7 @@ func _process(delta: float) -> void:
 	move()
 	pass
 
+
 func move() :
 	if active == true and is_colliding == true :
 		for i in target :
@@ -28,9 +29,11 @@ func  activate():
 	active = true
 	dir = dir.rotated(1*PI)
 
+
 func  deactivate():
 	active = true
 	dir = dir.rotated(1*PI)
+
 
 func _on_area_entered(area: Area2D) -> void:
 	is_colliding = true
@@ -40,12 +43,12 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("target"):
 		poison = get_path_to(area.get_parent())
 		target.append(get_node(poison))
-	print("enter")
+
 
 func _on_area_exited(area: Area2D) -> void:
 	if area.is_in_group("player"):
 		target.erase(area.get_parent())
 	if area.is_in_group("target"):
 		target.erase(area.get_parent())
-	print("exit")
+
 	pass # Replace with function body.

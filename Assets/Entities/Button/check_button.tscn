@@ -115,7 +115,7 @@ animations = [{
 "speed": 24.0
 }]
 
-[node name="CheckButton" type="CheckButton" unique_id=1620363867]
+[node name="CheckButton" type="CheckButton" unique_id=1620363867 node_paths=PackedStringArray("point_light_2d")]
 modulate = Color(0.8392157, 0.7137255, 0.62352943, 1)
 self_modulate = Color(1, 1, 1, 0)
 top_level = true
@@ -129,6 +129,7 @@ mouse_filter = 1
 mouse_behavior_recursive = 2
 mouse_default_cursor_shape = 2
 script = ExtResource("1_ihiit")
+point_light_2d = NodePath("PointLight2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1632471975]
 modulate = Color(0.8392157, 0.7137255, 0.62352943, 1)
