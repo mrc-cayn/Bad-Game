@@ -8,6 +8,7 @@ var moving := false
 var current_scene
 var temp_death := false
 
+
 func _ready() -> void:
 	current_scene = get_tree().current_scene.scene_file_path
 
@@ -27,7 +28,7 @@ func  _process(delta: float) -> void:
 	
 	if death == true and temp_death == false:
 		player.death()
-		Engine.time_scale = 0.02
+		get_tree().paused = 0.02
 		temp_death = true
 		death = false
 		await get_tree().create_timer(0.2,true,false,true).timeout

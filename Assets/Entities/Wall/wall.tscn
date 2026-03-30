@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://ba1lpd2gxqer0" path="res://Assets/Entities/Wall/wall.gd" id="1_3jvos"]
 [ext_resource type="Texture2D" uid="uid://ds68kwnp5r1il" path="res://Assets/Entities/Wall/Sprite-0001.png" id="2_g3wfh"]
-[ext_resource type="Texture2D" uid="uid://cn6r6n0om536c" path="res://Assets/Entities/Wall/Sprite-0003.png" id="3_g3wfh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3jvos"]
 size = Vector2(32, 32)
@@ -43,23 +42,6 @@ _data = {
 &"activate": SubResource("Animation_g3wfh")
 }
 
-[sub_resource type="GDScript" id="GDScript_g3wfh"]
-script/source = "extends Sprite2D
-
-@onready var wall: StaticBody2D = $\"..\"
-
-func _ready() -> void:
-	global_rotation = wall.global_rotation
-	position = Vector2.from_angle(rotation)*wall.target_height
-	print(global_position)
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
-
 [node name="Wall" type="StaticBody2D" unique_id=1816247195]
 z_index = 1
 position = Vector2(16, 16)
@@ -78,11 +60,3 @@ shape = SubResource("RectangleShape2D_3jvos")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1716475048]
 libraries/ = SubResource("AnimationLibrary_02yh4")
 autoplay = &"activate"
-
-[node name="Line" type="Sprite2D" parent="." unique_id=2003815934]
-visible = false
-self_modulate = Color(1, 1, 1, 0.19607843)
-top_level = true
-scale = Vector2(2, 2)
-texture = ExtResource("3_g3wfh")
-script = SubResource("GDScript_g3wfh")

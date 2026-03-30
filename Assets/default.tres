@@ -2,9 +2,16 @@
 
 [ext_resource type="FontFile" uid="uid://dbfv4y71wnnfb" path="res://Assets/Sprites/Cutive_Mono,Freckle_Face,Google_Sans_Code,Sirivennela/Freckle_Face/FreckleFace-Regular.ttf" id="1_mkqy2"]
 [ext_resource type="Texture2D" uid="uid://cfmll8ycdu41w" path="res://Assets/Sprite-0002.png" id="2_86phr"]
+[ext_resource type="Texture2D" uid="uid://ce8bbtkhiqrx6" path="res://Assets/Entities/Cat/Sprite-0002.png" id="3_7ii8n"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_86phr"]
+load_path = "res://.godot/imported/Sprite-0002.png-36061b294f4f686d7ed2a3f7c1edf3ce.ctex"
 
 [resource]
 default_font = ExtResource("1_mkqy2")
 default_font_size = 512
 Button/fonts/font = ExtResource("1_mkqy2")
 Button/icons/icon = ExtResource("2_86phr")
+HSlider/icons/grabber = SubResource("CompressedTexture2D_86phr")
+HSlider/icons/grabber_disabled = ExtResource("3_7ii8n")
+HSlider/icons/grabber_highlight = ExtResource("3_7ii8n")

@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://bub5x62nnekn7"]
+
+[ext_resource type="Script" uid="uid://b380i564snhj1" path="res://globals/pause.gd" id="1_vhj7t"]
+[ext_resource type="Script" uid="uid://d38ro2610m20h" path="res://managers/Scene/audio.gd" id="2_2orn3"]
+[ext_resource type="Theme" uid="uid://ctstjshwmp4m4" path="res://Assets/default.tres" id="3_cvjvj"]
+[ext_resource type="AudioStream" uid="uid://cqm246erf1r6o" path="res://Assets/Audio/SFX/Bounce.wav" id="4_xc4ve"]
+
+[node name="Pause" type="Node" unique_id=42851212]
+script = ExtResource("1_vhj7t")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=367384066]
+
+[node name="PopupPanel" type="PopupPanel" parent="CanvasLayer" unique_id=1712913721]
+oversampling_override = 1.0
+initial_position = 4
+size = Vector2i(320, 240)
+visible = true
+
+[node name="Audio" type="Node2D" parent="CanvasLayer/PopupPanel" unique_id=18143558]
+position = Vector2(-384, -368)
+script = ExtResource("2_2orn3")
+
+[node name="SFX" type="HSlider" parent="CanvasLayer/PopupPanel/Audio" unique_id=1667529378]
+z_index = 99
+offset_left = 408.0
+offset_top = 408.0
+offset_right = 756.3334
+offset_bottom = 440.0
+scale = Vector2(0.8, 0.8)
+theme = ExtResource("3_cvjvj")
+max_value = 15.0
+step = 0.1
+value = 6.0
+ticks_on_borders = true
+
+[node name="Label" type="Label" parent="CanvasLayer/PopupPanel/Audio/SFX" unique_id=340559329]
+layout_mode = 0
+offset_left = 138.33334
+offset_top = -41.666664
+offset_right = 993.3334
+offset_bottom = 588.3333
+scale = Vector2(0.05, 0.05)
+theme = ExtResource("3_cvjvj")
+text = "SFX"
+
+[node name="bounce_1" type="AudioStreamPlayer2D" parent="CanvasLayer/PopupPanel/Audio/SFX" unique_id=1705204733]
+stream = ExtResource("4_xc4ve")
+bus = &"SFX"
+
+[node name="Music" type="HSlider" parent="CanvasLayer/PopupPanel/Audio" unique_id=258038034]
+z_index = 99
+offset_left = 408.0
+offset_top = 480.0
+offset_right = 756.3334
+offset_bottom = 512.0
+scale = Vector2(0.8, 0.8)
+theme = ExtResource("3_cvjvj")
+max_value = 20.0
+step = 0.1
+ticks_on_borders = true
+
+[node name="Label2" type="Label" parent="CanvasLayer/PopupPanel/Audio/Music" unique_id=1195972940]
+layout_mode = 0
+offset_left = 146.66667
+offset_top = -31.666666
+offset_right = 1401.6666
+offset_bottom = 598.3333
+scale = Vector2(0.05, 0.05)
+theme = ExtResource("3_cvjvj")
+text = "Music"
+
+[node name="Button" type="Button" parent="CanvasLayer/PopupPanel/Audio" unique_id=1891921674]
+offset_left = 407.99997
+offset_top = 527.99994
+offset_right = 2488.0005
+offset_bottom = 1648.0015
+scale = Vector2(0.05, 0.05)
+theme = ExtResource("3_cvjvj")
+text = "Close"
+
+[node name="Button2" type="Button" parent="CanvasLayer/PopupPanel/Audio" unique_id=86305745]
+offset_left = 544.0
+offset_top = 520.0
+offset_right = 3423.9995
+offset_bottom = 1788.0
+scale = Vector2(0.05, 0.05)
+theme = ExtResource("3_cvjvj")
+text = "Rturn to
+main menu"
+
+[connection signal="close_requested" from="CanvasLayer/PopupPanel" to="." method="_on_popup_panel_close_requested"]
+[connection signal="drag_ended" from="CanvasLayer/PopupPanel/Audio/SFX" to="CanvasLayer/PopupPanel/Audio" method="_on_sfx_drag_ended"]
+[connection signal="mouse_exited" from="CanvasLayer/PopupPanel/Audio/SFX" to="CanvasLayer/PopupPanel/Audio" method="_on_sfx_mouse_exited"]
+[connection signal="value_changed" from="CanvasLayer/PopupPanel/Audio/SFX" to="CanvasLayer/PopupPanel/Audio" method="_on_sfx_value_changed"]
+[connection signal="mouse_exited" from="CanvasLayer/PopupPanel/Audio/Music" to="CanvasLayer/PopupPanel/Audio" method="_on_music_mouse_exited"]
+[connection signal="value_changed" from="CanvasLayer/PopupPanel/Audio/Music" to="CanvasLayer/PopupPanel/Audio" method="_on_music_value_changed"]
+[connection signal="button_up" from="CanvasLayer/PopupPanel/Audio/Button" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="CanvasLayer/PopupPanel/Audio/Button2" to="." method="_on_button_2_button_up"]

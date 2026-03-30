@@ -14,7 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://c2ta5nfdmtn3n" path="res://Assets/Entities/Cat/Cat_normal-S7.png" id="18_428ql"]
 [ext_resource type="Texture2D" uid="uid://crqe3gclrp3fo" path="res://Assets/Entities/Conver/sdaaaaaa.png" id="18_tt55e"]
 [ext_resource type="PackedScene" uid="uid://bau25nc0g48y2" path="res://Assets/Entities/Conver/conver.tscn" id="19_br8tj"]
+[ext_resource type="Script" uid="uid://d38ro2610m20h" path="res://managers/Scene/audio.gd" id="19_rtamr"]
 [ext_resource type="PackedScene" uid="uid://b0k5pb36dhf7o" path="res://Assets/Entities/Conver/animated_sprite_2d.tscn" id="19_xhdmq"]
+[ext_resource type="AudioStream" uid="uid://cqm246erf1r6o" path="res://Assets/Audio/SFX/Bounce.wav" id="20_tmv3n"]
 [ext_resource type="Texture2D" uid="uid://dqdowj318gfjg" path="res://Assets/Entities/Target/poian.png" id="21_rtamr"]
 [ext_resource type="PackedScene" uid="uid://1agrttq1rbs3" path="res://Assets/Entities/Target/target.tscn" id="23_kbaln"]
 [ext_resource type="PackedScene" uid="uid://b7tpcbkheqk6v" path="res://Assets/Entities/Launcher/launcher.tscn" id="23_tmv3n"]
@@ -40,6 +42,7 @@ position_smoothing_enabled = true
 oversampling_override = 1.0
 initial_position = 4
 size = Vector2i(512, 360)
+visible = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PopupMenu" unique_id=1630324375]
 offset_left = 16.0
@@ -70,6 +73,18 @@ scale = Vector2(0.05, 0.05)
 theme = ExtResource("1_w5a5w")
 theme_override_font_sizes/normal_font_size = 512
 text = "->"
+scroll_following = true
+scroll_following_visible_characters = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="PopupMenu" unique_id=642024786]
+offset_left = 296.0
+offset_top = 174.0
+offset_right = 6535.999
+offset_bottom = 7133.999
+scale = Vector2(0.05, 0.05)
+theme = ExtResource("1_w5a5w")
+theme_override_font_sizes/normal_font_size = 512
+text = "Esc to pause"
 scroll_following = true
 scroll_following_visible_characters = true
 
@@ -1010,6 +1025,64 @@ shape = SubResource("RectangleShape2D_tmv3n")
 position = Vector2(160, 384)
 texture = ExtResource("18_428ql")
 
+[node name="Audio" type="Node2D" parent="." unique_id=1100406352]
+position = Vector2(-144, -312)
+script = ExtResource("19_rtamr")
+
+[node name="SFX" type="HSlider" parent="Audio" unique_id=1996206543]
+z_index = 99
+offset_left = 440.0
+offset_top = 416.0
+offset_right = 788.3334
+offset_bottom = 448.0
+scale = Vector2(0.6, 0.6)
+theme = ExtResource("1_w5a5w")
+max_value = 15.0
+step = 0.1
+value = 6.0
+ticks_on_borders = true
+
+[node name="Label" type="Label" parent="Audio/SFX" unique_id=372528415]
+layout_mode = 0
+offset_left = 138.33334
+offset_top = -41.666664
+offset_right = 993.3334
+offset_bottom = 588.3333
+scale = Vector2(0.05, 0.05)
+theme = ExtResource("1_w5a5w")
+text = "SFX"
+
+[node name="bounce_1" type="AudioStreamPlayer2D" parent="Audio/SFX" unique_id=155583376]
+stream = ExtResource("20_tmv3n")
+bus = &"SFX"
+
+[node name="Music" type="HSlider" parent="Audio" unique_id=1668265249]
+z_index = 99
+offset_left = 432.00003
+offset_top = 488.0
+offset_right = 780.3334
+offset_bottom = 520.0
+scale = Vector2(0.6, 0.6)
+theme = ExtResource("1_w5a5w")
+max_value = 20.0
+step = 0.1
+ticks_on_borders = true
+
+[node name="Label2" type="Label" parent="Audio/Music" unique_id=2026455397]
+layout_mode = 0
+offset_left = 146.66667
+offset_top = -31.666666
+offset_right = 1401.6666
+offset_bottom = 598.3333
+scale = Vector2(0.05, 0.05)
+theme = ExtResource("1_w5a5w")
+text = "Music"
+
 [connection signal="button_up" from="PopupMenu/Button" to="." method="_on_button_button_up"]
 [connection signal="button_up" from="Button" to="Button" method="_on_button_up"]
 [connection signal="button_up" from="Button2" to="." method="_on_button_2_button_up"]
+[connection signal="drag_ended" from="Audio/SFX" to="Audio" method="_on_sfx_drag_ended"]
+[connection signal="mouse_exited" from="Audio/SFX" to="Audio" method="_on_sfx_mouse_exited"]
+[connection signal="value_changed" from="Audio/SFX" to="Audio" method="_on_sfx_value_changed"]
+[connection signal="mouse_exited" from="Audio/Music" to="Audio" method="_on_music_mouse_exited"]
+[connection signal="value_changed" from="Audio/Music" to="Audio" method="_on_music_value_changed"]

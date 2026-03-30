@@ -1,9 +1,6 @@
 extends StaticBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var line: Sprite2D = $Line
-@onready var line_scale = line.scale
-
 @export var target_height : float
 @export var tile_size : int = 32
 @export var time : float = 1
@@ -21,7 +18,7 @@ func  _ready() -> void:
 
 func _process(delta: float) -> void:
 	pass
-	#print_debug(line_scale)
+
 
 func activate():
 	#print(animation_player.get_animation("activate").track_get_key_value(0,1))

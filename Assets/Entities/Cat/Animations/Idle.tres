@@ -1,6 +1,6 @@
 [gd_resource type="CanvasTexture" format=3 uid="uid://byddfisrlkeqe"]
 
-[ext_resource type="Texture2D" uid="uid://edd6iws01ai0" path="res://Assets/Entities/Cat/idle.png" id="1_tf44f"]
+[ext_resource type="Texture2D" uid="uid://bwnff0oa6v47v" path="res://Assets/Entities/Cat/Cat1.png" id="1_tf44f"]
 [ext_resource type="Texture2D" uid="uid://b1tb1qq231qh7" path="res://Assets/Entities/Cat/Cat_normal-Sheet-export.png" id="2_tf44f"]
 
 [resource]

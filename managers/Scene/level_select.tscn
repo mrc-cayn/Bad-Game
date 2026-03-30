@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://bgjlclukv1kmn" path="res://managers/texture_button.tscn" id="9_lv8vk"]
 [ext_resource type="Theme" uid="uid://ctstjshwmp4m4" path="res://Assets/default.tres" id="10_wf1uk"]
 [ext_resource type="Texture2D" uid="uid://wbb66wlhvkqk" path="res://managers/Scenes/Thumnail/1 (1).png" id="11_prf17"]
-[ext_resource type="Script" uid="uid://ib2fyr3au68x" path="res://managers/template_texture_button.gd" id="11_wf1uk"]
 [ext_resource type="Texture2D" uid="uid://blikq0cacx6dv" path="res://managers/Scenes/Thumnail/1 (2).png" id="13_u3rdf"]
 [ext_resource type="Texture2D" uid="uid://dtss1oimjk2dq" path="res://managers/Scenes/Thumnail/1 (3).png" id="14_0hko5"]
 [ext_resource type="Texture2D" uid="uid://btb8syttx0w1u" path="res://managers/Scenes/Thumnail/1 (4).png" id="15_tqni8"]
@@ -22,6 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://djwwmfco7dr4x" path="res://managers/Scenes/Thumnail/1 (9).png" id="20_harr2"]
 [ext_resource type="Texture2D" uid="uid://n8fltppyxq6l" path="res://managers/Scenes/Thumnail/1 (10).png" id="21_uwrjs"]
 [ext_resource type="Texture2D" uid="uid://dpw3h4htq3d3k" path="res://managers/Scenes/Thumnail/1 (11).png" id="22_b2ek3"]
+[ext_resource type="Script" uid="uid://d38ro2610m20h" path="res://managers/Scene/audio.gd" id="22_prf17"]
+[ext_resource type="AudioStream" uid="uid://cqm246erf1r6o" path="res://Assets/Audio/SFX/Bounce.wav" id="23_u3rdf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lubti"]
 shader = ExtResource("2_hx4y0")
@@ -476,7 +477,7 @@ visibility_layer = 7
 z_index = -20
 z_as_relative = false
 material = ExtResource("2_ne5yd")
-position = Vector2(-8, -3.8146973e-06)
+position = Vector2(51, -56)
 scale = Vector2(46.9, 33.600002)
 texture = ExtResource("7_ne5yd")
 
@@ -493,7 +494,6 @@ offset_bottom = 720.0
 scale = Vector2(0.05, 0.05)
 theme = ExtResource("10_wf1uk")
 texture_normal = ExtResource("11_prf17")
-script = ExtResource("11_wf1uk")
 level_select = true
 
 [node name="Label" type="Label" parent="Buttons/1" unique_id=1657110562]
@@ -512,7 +512,6 @@ offset_bottom = 688.0
 scale = Vector2(0.05, 0.05)
 theme = ExtResource("10_wf1uk")
 texture_normal = ExtResource("13_u3rdf")
-script = ExtResource("11_wf1uk")
 level_select = true
 
 [node name="Label2" type="Label" parent="Buttons/2" unique_id=1302070930]
@@ -532,7 +531,6 @@ offset_bottom = 624.0
 scale = Vector2(0.05, 0.05)
 theme = ExtResource("10_wf1uk")
 texture_normal = ExtResource("14_0hko5")
-script = ExtResource("11_wf1uk")
 level_select = true
 
 [node name="Label3" type="Label" parent="Buttons/3" unique_id=1002144522]
@@ -552,7 +550,6 @@ offset_bottom = 528.0
 scale = Vector2(0.05, 0.05)
 theme = ExtResource("10_wf1uk")
 texture_normal = ExtResource("15_tqni8")
-script = ExtResource("11_wf1uk")
 level_select = true
 
 [node name="Label4" type="Label" parent="Buttons/4" unique_id=1501095292]
@@ -573,7 +570,6 @@ offset_bottom = 432.0
 scale = Vector2(0.05, 0.05)
 theme = ExtResource("10_wf1uk")
 texture_normal = ExtResource("16_8d512")
-script = ExtResource("11_wf1uk")
 level_select = true
 
 [node name="Label5" type="Label" parent="Buttons/5" unique_id=729027413]
@@ -593,7 +589,6 @@ offset_bottom = 368.0
 scale = Vector2(0.1, 0.1)
 theme = ExtResource("10_wf1uk")
 texture_normal = ExtResource("17_48y3h")
-script = ExtResource("11_wf1uk")
 level_select = true
 
 [node name="Label6" type="Label" parent="Buttons/6" unique_id=1362003020]
@@ -614,7 +609,6 @@ offset_bottom = 336.0
 scale = Vector2(0.1, 0.1)
 theme = ExtResource("10_wf1uk")
 texture_normal = ExtResource("18_uab64")
-script = ExtResource("11_wf1uk")
 level_select = true
 
 [node name="Label7" type="Label" parent="Buttons/7" unique_id=55919523]
@@ -635,7 +629,6 @@ offset_bottom = 368.0
 scale = Vector2(0.1, 0.1)
 theme = ExtResource("10_wf1uk")
 texture_normal = ExtResource("19_e0ona")
-script = ExtResource("11_wf1uk")
 level_select = true
 
 [node name="Label8" type="Label" parent="Buttons/8" unique_id=324001762]
@@ -655,7 +648,6 @@ offset_bottom = 432.0
 scale = Vector2(0.1, 0.1)
 theme = ExtResource("10_wf1uk")
 texture_normal = ExtResource("20_harr2")
-script = ExtResource("11_wf1uk")
 level_select = true
 
 [node name="Label9" type="Label" parent="Buttons/9" unique_id=396281830]
@@ -675,7 +667,6 @@ offset_bottom = 528.0
 scale = Vector2(0.1, 0.1)
 theme = ExtResource("10_wf1uk")
 texture_normal = ExtResource("21_uwrjs")
-script = ExtResource("11_wf1uk")
 level_select = true
 
 [node name="Label10" type="Label" parent="Buttons/10" unique_id=873802126]
@@ -695,7 +686,6 @@ offset_bottom = 624.0
 scale = Vector2(0.05, 0.05)
 theme = ExtResource("10_wf1uk")
 texture_normal = ExtResource("22_b2ek3")
-script = ExtResource("11_wf1uk")
 level_select = true
 
 [node name="Label11" type="Label" parent="Buttons/11" unique_id=1184853330]
@@ -714,7 +704,6 @@ offset_right = 488.0
 offset_bottom = 688.0
 theme = ExtResource("10_wf1uk")
 texture_normal = ExtResource("7_ne5yd")
-script = ExtResource("11_wf1uk")
 level_select = true
 
 [node name="Label12" type="Label" parent="Buttons/12" unique_id=137567471]
@@ -778,3 +767,61 @@ trail_lifetime = 0.1
 trail_sections = 4
 trail_section_subdivisions = 2
 process_material = SubResource("ParticleProcessMaterial_0hko5")
+
+[node name="Audio" type="Node2D" parent="." unique_id=1296111062]
+script = ExtResource("22_prf17")
+
+[node name="SFX" type="HSlider" parent="Audio" unique_id=1359821011]
+z_index = 99
+offset_left = 456.0
+offset_top = 378.0
+offset_right = 804.3333
+offset_bottom = 410.0
+scale = Vector2(0.6, 0.6)
+theme = ExtResource("10_wf1uk")
+max_value = 15.0
+step = 0.1
+value = 6.0
+ticks_on_borders = true
+
+[node name="Label" type="Label" parent="Audio/SFX" unique_id=1317210560]
+layout_mode = 0
+offset_left = 138.33334
+offset_top = -41.666664
+offset_right = 993.3334
+offset_bottom = 588.3333
+scale = Vector2(0.05, 0.05)
+theme = ExtResource("10_wf1uk")
+text = "SFX"
+
+[node name="bounce_1" type="AudioStreamPlayer2D" parent="Audio/SFX" unique_id=2064480639]
+stream = ExtResource("23_u3rdf")
+bus = &"SFX"
+
+[node name="Music" type="HSlider" parent="Audio" unique_id=565966471]
+z_index = 99
+offset_left = 456.0
+offset_top = 584.0
+offset_right = 804.3333
+offset_bottom = 616.0
+scale = Vector2(0.6, 0.6)
+theme = ExtResource("10_wf1uk")
+max_value = 20.0
+step = 0.1
+ticks_on_borders = true
+
+[node name="Label2" type="Label" parent="Audio/Music" unique_id=530325652]
+layout_mode = 0
+offset_left = 146.66667
+offset_top = -31.666666
+offset_right = 1401.6666
+offset_bottom = 598.3333
+scale = Vector2(0.05, 0.05)
+theme = ExtResource("10_wf1uk")
+text = "Music"
+
+[connection signal="drag_ended" from="Audio/SFX" to="Audio" method="_on_sfx_drag_ended"]
+[connection signal="mouse_exited" from="Audio/SFX" to="Audio" method="_on_sfx_mouse_exited"]
+[connection signal="value_changed" from="Audio/SFX" to="Audio" method="_on_sfx_value_changed"]
+[connection signal="mouse_exited" from="Audio/Music" to="Audio" method="_on_music_mouse_exited"]
+[connection signal="value_changed" from="Audio/Music" to="Audio" method="_on_music_value_changed"]

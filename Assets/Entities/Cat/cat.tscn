@@ -149,14 +149,6 @@ region = Rect2(0, 0, 32, 32)
 atlas = ExtResource("2_b5tg2")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cucod"]
-atlas = ExtResource("2_b5tg2")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4oqjq"]
-atlas = ExtResource("2_b5tg2")
-region = Rect2(64, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_b5tg2"]
 atlas = ExtResource("3_gd3th")
 region = Rect2(32, 0, 32, 32)
@@ -268,12 +260,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_g3sy6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cucod")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4oqjq")
 }],
 "loop": false,
 "name": &"Idle",
@@ -398,7 +384,7 @@ shape = SubResource("CircleShape2D_gd3th")
 material = SubResource("ShaderMaterial_h57f5")
 position = Vector2(0, 16)
 sprite_frames = SubResource("SpriteFrames_g3sy6")
-animation = &"walk_transition"
+animation = &"Idle"
 autoplay = "Idle"
 offset = Vector2(0, -16)
 

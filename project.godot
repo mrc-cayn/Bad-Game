@@ -46,12 +46,12 @@ window/size/viewport_width=640
 window/size/viewport_height=480
 window/size/mode=2
 window/size/resizable=false
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="uid://doi61pocp5hh5"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/animated shape/addons/goutte.animated_shape_2d/plugin.cfg")
+enabled=PackedStringArray()
 
 [global_group]
 
@@ -101,6 +101,11 @@ jump={
 R={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":82,"key_label":0,"unicode":114,"location":0,"echo":false,"script":null)
+]
+}
+escape={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 

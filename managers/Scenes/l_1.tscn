@@ -14,7 +14,6 @@
 [ext_resource type="TileSet" uid="uid://dm55ioqe4312x" path="res://Assets/Sprites/Lighting.tres" id="11_bh6k1"]
 [ext_resource type="Texture2D" uid="uid://dkx4xb0fmfj6x" path="res://Assets/Sprites/Glow.png" id="12_x0qb8"]
 [ext_resource type="PackedScene" uid="uid://ivjeacoqrml0" path="res://managers/Scenes/Background.tscn" id="13_u1f04"]
-[ext_resource type="Texture2D" uid="uid://doxm308es3t3w" path="res://Assets/Sprites/tile_0028.png" id="15_buxh2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_imt5b"]
 texture = ExtResource("9_3u6fb")
@@ -140,8 +139,3 @@ shadow_enabled = true
 texture = ExtResource("12_x0qb8")
 
 [node name="AnimationPlayer" parent="." unique_id=1080574321 instance=ExtResource("13_u1f04")]
-
-[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=797364636]
-z_index = 11
-position = Vector2(220, 46)
-texture = ExtResource("15_buxh2")
