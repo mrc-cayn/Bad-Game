@@ -88,7 +88,7 @@ rotation = 4.712389
 [node name="Conver" parent="." unique_id=651640355 instance=ExtResource("13_40ood")]
 position = Vector2(0, 120)
 scale = Vector2(40.8, 2.1000001)
-force_static = 150
+force_static = 160
 
 [node name="button" parent="Conver" unique_id=19675738 instance=ExtResource("7_n4fcy")]
 anchors_preset = -1
@@ -223,7 +223,7 @@ speed_scale = 2.5
 [node name="Conver2" parent="." unique_id=705935951 instance=ExtResource("13_40ood")]
 position = Vector2(168, -27)
 scale = Vector2(48.020004, 2.1000001)
-force_static = 150
+force_static = 160
 dir = Vector2(1, 0)
 
 [node name="button" parent="Conver2" unique_id=130041098 instance=ExtResource("7_n4fcy")]
@@ -359,7 +359,7 @@ speed_scale = 3.0
 position = Vector2(-550, -123)
 scale = Vector2(48.020004, 2.1000001)
 force = 8
-force_static = 150
+force_static = 160
 dir = Vector2(-1, -1)
 
 [node name="AnimatedSprite2D21" parent="Conver3" unique_id=610384981 instance=ExtResource("17_fy8ae")]

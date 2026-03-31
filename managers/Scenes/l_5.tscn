@@ -71,7 +71,7 @@ velocity = 600
 [node name="Launcher3" parent="." unique_id=503144206 instance=ExtResource("8_pkx47")]
 position = Vector2(312, -224)
 rotation = 4.712389
-dir = Vector2(-1, 0.2)
+dir = Vector2(-1, 0)
 velocity = 1500
 
 [node name="Launcher7" parent="." unique_id=1346991228 instance=ExtResource("8_pkx47")]

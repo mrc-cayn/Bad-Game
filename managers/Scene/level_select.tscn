@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://ce8bbtkhiqrx6" path="res://Assets/Entities/Cat/Sprite-0002.png" id="1_einrq"]
 [ext_resource type="Shader" uid="uid://ddxgjcn15adry" path="res://addons/alo transition/transition.gdshader" id="2_hx4y0"]
 [ext_resource type="Material" uid="uid://cpr37slmvuug1" path="res://Assets/inversion.tres" id="2_ne5yd"]
-[ext_resource type="Texture2D" uid="uid://cq060j3i3nywb" path="res://extra/Background.png" id="3_hx4y0"]
 [ext_resource type="Texture2D" uid="uid://c8wml5k8apt8q" path="res://extra/grid1.png" id="3_lubti"]
 [ext_resource type="Script" uid="uid://bx3h0fwcu727k" path="res://managers/Scenes/background.gd" id="4_brmsf"]
 [ext_resource type="Texture2D" uid="uid://djse0tebdc6hi" path="res://extra/grid.png" id="4_lubti"]
@@ -23,210 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://dpw3h4htq3d3k" path="res://managers/Scenes/Thumnail/1 (11).png" id="22_b2ek3"]
 [ext_resource type="Script" uid="uid://d38ro2610m20h" path="res://managers/Scene/audio.gd" id="22_prf17"]
 [ext_resource type="AudioStream" uid="uid://cqm246erf1r6o" path="res://Assets/Audio/SFX/Bounce.wav" id="23_u3rdf"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lubti"]
-shader = ExtResource("2_hx4y0")
-shader_parameter/use_sprite_alpha = true
-shader_parameter/use_transition_texture = false
-shader_parameter/transition_type = 0
-shader_parameter/position = Vector2(0, 0)
-shader_parameter/invert = false
-shader_parameter/grid_size = Vector2(8, 8)
-shader_parameter/rotation_angle = 0.0
-shader_parameter/stagger = Vector2(0, 0)
-shader_parameter/stagger_frequency = Vector2i(2, 2)
-shader_parameter/flip_frequency = Vector2i(1, 1)
-shader_parameter/basic_feather = 0.0
-shader_parameter/use_mask_size = false
-shader_parameter/mask_size = Vector2(100, 100)
-shader_parameter/edges = 6
-shader_parameter/shape_feather = 0.1
-shader_parameter/sectors = 1
-shader_parameter/clock_feather = 0.0
-shader_parameter/progress = 0.0
-shader_parameter/progress_bias = Vector2(0, 0)
-
-[sub_resource type="Animation" id="Animation_x0qb8"]
-resource_name = "Loop"
-length = 5.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/progress")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2, 3.5333333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 0.0, 1.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:material:shader_parameter/basic_feather")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5, 2, 2.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.5, -1.0, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:material:shader_parameter/transition_type")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(2),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:material:shader_parameter/sectors")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(2.5, 3.51),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [8, 1]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:material:shader_parameter/invert")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(3, 3.51),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:material:shader_parameter/stagger")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(3.5),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.25, 1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath(".:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 2.5, 5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-40, -60), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_u1f04"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/progress")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:material:shader_parameter/basic_feather")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:material:shader_parameter/transition_type")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:material:shader_parameter/sectors")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:material:shader_parameter/invert")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:material:shader_parameter/stagger")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath(".:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fofx1"]
-_data = {
-&"Loop": SubResource("Animation_x0qb8"),
-&"RESET": SubResource("Animation_u1f04")
-}
 
 [sub_resource type="Animation" id="Animation_liusx"]
 resource_name = "Loop"
@@ -401,50 +196,52 @@ hue_variation_max = 0.09999997
 [node name="Level_select" type="Node2D" unique_id=495151369]
 position = Vector2(-552, -496)
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1475098718]
-offset_left = 500.80005
-offset_top = 443.20013
-offset_right = 884.80005
-offset_bottom = 755.20013
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_einrq")
-
-[node name="TextureRect3" type="TextureRect" parent="." unique_id=1069554509]
-offset_left = 564.80005
-offset_top = 443.20013
-offset_right = 948.80005
-offset_bottom = 755.20013
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_einrq")
-
 [node name="TextureRect4" type="TextureRect" parent="." unique_id=188995787]
 material = ExtResource("2_ne5yd")
-offset_left = 564.80005
-offset_top = 515.20013
-offset_right = 948.80005
-offset_bottom = 827.20013
+offset_left = 496.0
+offset_top = 440.0
+offset_right = 1568.0005
+offset_bottom = 1504.0012
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_einrq")
 
-[node name="TextureRect5" type="TextureRect" parent="." unique_id=1460092853]
-offset_left = 500.80005
-offset_top = 515.20013
-offset_right = 884.80005
-offset_bottom = 827.20013
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_einrq")
+[node name="Label" type="Label" parent="TextureRect4" unique_id=2060315649]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = -80.000015
+offset_top = 399.99997
+offset_right = 3086.0
+offset_bottom = 1030.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("10_wf1uk")
+text = "Finalmessage"
 
-[node name="TextureRect2" type="TextureRect" parent="." unique_id=1296818653]
-self_modulate = Color(0.23753911, 0.23753914, 0.23753911, 1)
-z_index = -10
-material = SubResource("ShaderMaterial_lubti")
-offset_right = 928.0
-offset_bottom = 928.0
-texture = ExtResource("3_hx4y0")
+[node name="Label2" type="Label" parent="TextureRect4" unique_id=1161703719]
+layout_mode = 0
+offset_left = -80.000015
+offset_top = 399.99997
+offset_right = 3086.0
+offset_bottom = 1030.0
+scale = Vector2(0.41, 0.41)
+theme = ExtResource("10_wf1uk")
+text = "Final_message"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect2" unique_id=617495209]
-libraries/ = SubResource("AnimationLibrary_fofx1")
-autoplay = &"Loop"
+[node name="1" parent="TextureRect4" unique_id=1717681460 instance=ExtResource("9_lv8vk")]
+layout_mode = 0
+offset_right = 21400.0
+offset_bottom = 21200.0
+scale = Vector2(0.05, 0.05)
+theme = ExtResource("10_wf1uk")
+texture_normal = ExtResource("11_prf17")
+target_scene_path = "res://managers/Scenes/l_13.tscn"
+
+[node name="Label" type="Label" parent="TextureRect4/1" unique_id=1300770690]
+layout_mode = 0
+offset_left = 480.0
+offset_right = 706.0
+offset_bottom = 630.0
+scale = Vector2(1.6, 1.6)
+text = "1"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1080574321]
 libraries/ = SubResource("AnimationLibrary_s588d")
@@ -486,7 +283,7 @@ position = Vector2(552, 496)
 
 [node name="Buttons" type="Node2D" parent="." unique_id=1930632346]
 
-[node name="1" parent="Buttons" unique_id=1717681460 instance=ExtResource("9_lv8vk")]
+[node name="1" parent="Buttons" unique_id=929132657 instance=ExtResource("9_lv8vk")]
 offset_left = 520.0
 offset_top = 656.0
 offset_right = 584.0

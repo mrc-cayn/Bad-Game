@@ -49,6 +49,10 @@ window/size/resizable=false
 window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="uid://doi61pocp5hh5"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/JAIPUR/Documents/godot games/Bad Game/recordings/first.ogv"
+
 [editor_plugins]
 
 enabled=PackedStringArray()

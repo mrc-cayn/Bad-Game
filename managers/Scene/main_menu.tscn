@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://bwnff0oa6v47v" path="res://Assets/Entities/Cat/Cat1.png" id="10_p65c5"]
 [ext_resource type="PackedScene" uid="uid://caqbrx0o1oqcn" path="res://Assets/Entities/Button/button.tscn" id="17_8njcg"]
 [ext_resource type="Texture2D" uid="uid://c2ta5nfdmtn3n" path="res://Assets/Entities/Cat/Cat_normal-S7.png" id="18_428ql"]
-[ext_resource type="Texture2D" uid="uid://crqe3gclrp3fo" path="res://Assets/Entities/Conver/sdaaaaaa.png" id="18_tt55e"]
 [ext_resource type="PackedScene" uid="uid://bau25nc0g48y2" path="res://Assets/Entities/Conver/conver.tscn" id="19_br8tj"]
 [ext_resource type="Script" uid="uid://d38ro2610m20h" path="res://managers/Scene/audio.gd" id="19_rtamr"]
 [ext_resource type="PackedScene" uid="uid://b0k5pb36dhf7o" path="res://Assets/Entities/Conver/animated_sprite_2d.tscn" id="19_xhdmq"]
@@ -181,10 +180,6 @@ offset_right = 189.0
 offset_bottom = 181.0
 scale = Vector2(1.8000001, 1.8000001)
 script = null
-
-[node name="Sdaaaaaa" type="Sprite2D" parent="." unique_id=1816562810]
-position = Vector2(83, 189)
-texture = ExtResource("18_tt55e")
 
 [node name="Conver2" type="Node2D" parent="." unique_id=784641801]
 position = Vector2(-2184, -208)
@@ -1077,6 +1072,15 @@ offset_bottom = 598.3333
 scale = Vector2(0.05, 0.05)
 theme = ExtResource("1_w5a5w")
 text = "Music"
+
+[node name="Label2" type="Label" parent="." unique_id=1823430083]
+offset_left = 151.99998
+offset_top = 16.000004
+offset_right = 3325.0
+offset_bottom = 646.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("1_w5a5w")
+text = "slödinger's cat"
 
 [connection signal="button_up" from="PopupMenu/Button" to="." method="_on_button_button_up"]
 [connection signal="button_up" from="Button" to="Button" method="_on_button_up"]

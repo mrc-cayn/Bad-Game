@@ -4,7 +4,7 @@ extends Node
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("escape"):
+	if Input.is_action_just_pressed("escape") and G.death == false:
 		popup_panel.visible = true
 		Engine.time_scale = 0
 		pass

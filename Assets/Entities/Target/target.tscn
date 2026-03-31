@@ -109,5 +109,6 @@ texture = ExtResource("3_7qsbq")
 self_modulate = Color(0.9019608, 1, 0, 1)
 amount = 32
 lifetime = 2.0
+preprocess = 1.0
 explosiveness = 0.2
 process_material = SubResource("ParticleProcessMaterial_w3gw3")

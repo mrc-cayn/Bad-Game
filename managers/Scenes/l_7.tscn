@@ -62,7 +62,7 @@ velocity_static = 9000
 [node name="Launcher3" parent="." unique_id=1531824894 instance=ExtResource("8_dkilc")]
 position = Vector2(-296, -184)
 rotation = 1.5707964
-dir = Vector2(1, -0.1)
+dir = Vector2(1, -0.2)
 velocity = 1000
 velocity_static = 7000
 
@@ -85,13 +85,13 @@ position = Vector2(352, -88)
 rotation = 4.712389
 
 [node name="Conver" parent="." unique_id=651640355 instance=ExtResource("13_echu1")]
-position = Vector2(31.999998, 134.99998)
+position = Vector2(32, 128)
 scale = Vector2(31, 2.093)
 force = 6
 dir = Vector2(1, 0)
 
 [node name="Conver2" parent="." unique_id=1778271319 instance=ExtResource("13_echu1")]
-position = Vector2(40, -48)
+position = Vector2(40, -64)
 scale = Vector2(24, 2.1000001)
 force = 6
 force_static = 105

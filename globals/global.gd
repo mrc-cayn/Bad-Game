@@ -10,9 +10,11 @@ var temp_death := false
 
 
 func _ready() -> void:
+	
 	current_scene = get_tree().current_scene.scene_file_path
 
 func  _process(delta: float) -> void:
+	#Engine.time_scale=0
 	player = get_tree().get_first_node_in_group("player")
 	if get_tree().current_scene != null :
 		current_scene = get_tree().current_scene.scene_file_path
@@ -24,11 +26,11 @@ func  _process(delta: float) -> void:
 	else :
 		G.moving = false
 	
-		
+	print(Engine.time_scale)
 	
 	if death == true and temp_death == false:
 		player.death()
-		get_tree().paused = 0.02
+		Engine.time_scale = 0.02
 		temp_death = true
 		death = false
 		await get_tree().create_timer(0.2,true,false,true).timeout
